@@ -1,24 +1,41 @@
-# README
+# My_Closet
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+購入した服を管理・投稿することができるコミュニティサイトです。
 
-Things you may want to cover:
+新しい服を購入する際、既に持っている服とどのように組み合わせるか考えたことがあると思います。
+しかし、家にある全ての服を思い出すことは容易ではありません。また、色や丈など曖昧にしか覚えていない場合があります。
+このアプリケーションでは、所持している服を一覧で見ることができ、画像で詳細まで確認することができます。
+服の管理、購入時のお役に立てれば幸いです。
 
-* Ruby version
+### テーマを選んだ理由
+欲しい服を見つけた際、既に似たような服を持っているのでは？と疑問に思うことが多々あります。
+また、季節が変わるたびに、去年どんな服を着ていた？と悩んでしまいます。
+そこで、持っている服をアプリケーションで管理できれば、
+いつでも手軽に確認することができ、これらの問題解決に繋がるのではないかと思いました。
 
-* System dependencies
+### ターゲットユーザ
+- 服が好きな人
+- 服をたくさん持っている人
+- 他の人のファッションを参考にしたい人
 
-* Configuration
+### 主な利用シーン
+- 新しい服を購入したとき
+- どんな服を持っていたのか確認したいとき
+- 服の組み合わせに悩んだとき
 
-* Database creation
 
-* Database initialization
+## 設計書
+<...>
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。

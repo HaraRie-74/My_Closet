@@ -1,2 +1,43 @@
-<h1>Public::Closets#show</h1>
-<p>Find me in app/views/public/closets/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1>closet_show</h1>
+    <div class="col-5">
+
+    </div>
+    <div class="col-5">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>購入日</td>
+            <td><%= @closet.purchase_date %></td>
+          </tr>
+          <tr>
+            <td>購入店舗</td>
+            <td><%= @closet.purchase_store %></td>
+          </tr>
+          <tr>
+            <td>値段</td>
+            <td><%= @closet.purchase_price %> 円</td>
+          </tr>
+          <tr>
+            <td>季節</td>
+            <td><%= @closet.season_i18n %></td>
+          </tr>
+          <tr></tr>
+          <tr>
+            <td>メモ</td>
+            <td><%= @closet.memo %></td>
+          </tr>
+          <tr>
+            <td>タグ</td>
+            <td>
+              <% @closet_tags.each do |closet_tag| %>
+                <%= closet_tag.tag.tag_name %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

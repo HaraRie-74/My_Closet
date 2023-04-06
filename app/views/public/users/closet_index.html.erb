@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <h1>Closet_index</h1>
+    <table class="table">
+      <% @closets.each do |closet| %>
+      <tbody>
+        <tr>
+          <%= closet.memo %>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+
+    <%= link_to "新規投稿", new_closet_path, class:"btn btn-primary" %>
+  </div>
+</div>

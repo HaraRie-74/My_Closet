@@ -23,27 +23,44 @@
     </ul>
     <div id="tab-contents">
       <div id="tab1" class="tab">
-        <p>TAB1のテキストが入ります。</p>
+        <% @spring.each do |spring| %>
+          <%= link_to closet_path(spring.id) do %>
+            <%= image_tag spring.images[0].variant(resize_to_limit: [300, 400]).processed %>
+          <% end %>
+        <% end %>
       </div>
-
       <div id="tab2" class="tab">
-        <p>TAB2のテキストが入ります。TAB2のテキストが入ります。</p>
+        <% @summer.each do |summer| %>
+          <%= link_to closet_path(summer.id) do %>
+            <%= image_tag summer.images[0].variant(resize_to_limit: [300, 400]).processed %>
+          <% end %>
+        <% end %>
       </div>
-
       <div id="tab3" class="tab">
-        <p>TAB3のテキストが入ります。TAB3のテキストが入ります。TAB3のテキストが入ります。</p>
+        <% @autumn.each do |autumn| %>
+          <%= link_to closet_path(autumn.id) do %>
+            <%= image_tag autumn.images[0].variant(resize_to_limit: [300, 400]).processed %>
+          <% end %>
+        <% end %>
       </div>
-
       <div id="tab4" class="tab">
-        <p>TAB4のテキストが入ります。TAB4のテキストが入ります。TAB4のテキストが入ります。TAB4のテキストが入ります。</p>
+        <% @winter.each do |winter| %>
+          <%= link_to closet_path(winter.id) do %>
+            <%= image_tag winter.images[0].variant(resize_to_limit: [300, 400]).processed %>
+          <% end %>
+        <% end %>
       </div>
       <div id="tab5" class="tab">
-        <p>TAB5のテキストが入ります。</p>
+        <% @other.each do |other| %>
+          <%= link_to closet_path(other.id) do %>
+            <%= image_tag other.images[0].variant(resize_to_limit: [300, 400]).processed %>
+          <% end %>
+        <% end %>
       </div>
     </div>
 
     </div>
 　<!--</div>-->
-  <!--<%= link_to "新規投稿", new_closet_path, class:"btn btn-primary" %>-->
+  <%= link_to "新規投稿", new_closet_path, class:"btn btn-primary" %>
   <%= javascript_pack_tag 'tabbar' %>
 </div>

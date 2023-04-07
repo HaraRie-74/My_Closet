@@ -9,7 +9,8 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 import "jquery"
-import "script.js"
+// import "tabbar.js"
+import "swiper.js"
 import "popper.js";
 import "bootstrap"
 import "../stylesheets/application"

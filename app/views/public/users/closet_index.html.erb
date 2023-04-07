@@ -1,16 +1,49 @@
 <div class="container">
   <div class="row">
     <h1>Closet_index</h1>
-    <table class="table">
-      <% @closets.each do |closet| %>
-      <tbody>
-        <tr>
-          <%= closet.memo %>
-        </tr>
-      </tbody>
-      <% end %>
-    </table>
-
-    <%= link_to "新規投稿", new_closet_path, class:"btn btn-primary" %>
   </div>
+  <!--<div class="row">-->
+    <div class="wrap">
+      <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a href="#tab1" class="nav-link active">春</a>
+      </li>
+      <li class="nav-item">
+        <a href="#tab2" class="nav-link ">夏</a>
+      </li>
+      <li class="nav-item">
+        <a href="#tab3" class="nav-link ">秋</a></a>
+      </li>
+      <li class="nav-item">
+        <a href="#tab4" class="nav-link ">冬</a>
+      </li>
+      <li class="nav-item">
+        <a href="#tab5" class="nav-link ">その他</a>
+      </li>
+    </ul>
+    <div id="tab-contents">
+      <div id="tab1" class="tab">
+        <p>TAB1のテキストが入ります。</p>
+      </div>
+
+      <div id="tab2" class="tab">
+        <p>TAB2のテキストが入ります。TAB2のテキストが入ります。</p>
+      </div>
+
+      <div id="tab3" class="tab">
+        <p>TAB3のテキストが入ります。TAB3のテキストが入ります。TAB3のテキストが入ります。</p>
+      </div>
+
+      <div id="tab4" class="tab">
+        <p>TAB4のテキストが入ります。TAB4のテキストが入ります。TAB4のテキストが入ります。TAB4のテキストが入ります。</p>
+      </div>
+      <div id="tab5" class="tab">
+        <p>TAB5のテキストが入ります。</p>
+      </div>
+    </div>
+
+    </div>
+　<!--</div>-->
+  <!--<%= link_to "新規投稿", new_closet_path, class:"btn btn-primary" %>-->
+  <%= javascript_pack_tag 'tabbar' %>
 </div>

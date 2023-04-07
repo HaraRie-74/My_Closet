@@ -40,7 +40,7 @@ class Public::ClosetsController < ApplicationController
   private
 
   def closet_params
-    params.require(:closet).permit(:purchase_date, :purchase_store, :purchase_price, :season, :memo)
+    params.require(:closet).permit(:purchase_date, :purchase_store, :purchase_price, :season, :memo, images:[])
   end
 
 end

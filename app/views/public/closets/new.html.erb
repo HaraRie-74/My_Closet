@@ -25,6 +25,10 @@
           <td><%= f.text_area :memo %></td>
         </tr>
         <tr>
+          <td>画像選択</td>
+          <td><%= f.file_field :images, multiple: true %></td>
+        </tr>
+        <tr>
           <td colspan="2"><%= f.submit "タグをつける" %></td>
         </tr>
       </tbody>

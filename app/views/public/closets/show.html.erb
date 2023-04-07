@@ -1,10 +1,23 @@
 <div class="container">
   <div class="row">
-    <h1>closet_show</h1>
     <div class="col-5">
-
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <% @closet.images.each do |image| %>
+            <div class="swiper-slide">
+              <%= image_tag image.variant(resize_to_limit: [300, 400]) %>
+            </div>
+          <% end %>
+        </div>
+        <!--ページネーションの要素-->
+        <div class="swiper-pagination"></div>
+        <!--ナビゲーションボタン （前、次）-->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
     </div>
     <div class="col-5">
+      <h1>closet_show</h1>
       <table class="table">
         <tbody>
           <tr>

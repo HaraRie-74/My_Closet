@@ -2,7 +2,7 @@ class Closet < ApplicationRecord
 
   belongs_to :user
 
-  # has_many_attached :images
+  has_many_attached :images
 
   # タグのリレーションシップ
   has_many :closet_tags, dependent: :destroy

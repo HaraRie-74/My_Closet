@@ -1,2 +1,12 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.swiper{
+  width:300px;
+  height:400px;
+}
+
+:root{
+  --swiper-navigation-color:#ff0000;
+  --swiper-pagination-color:#000000;
+}

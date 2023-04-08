@@ -18,6 +18,11 @@ class Public::ClosetsController < ApplicationController
 
   # 他人のみ
   def index
+    @spring_all=Closet.where(season: 0)
+    @summer_all=Closet.where(season: 1)
+    @autumn_all=Closet.where(season: 2)
+    @winter_all=Closet.where(season: 3)
+    @other_all=Closet.where(season: 4)
   end
 
 

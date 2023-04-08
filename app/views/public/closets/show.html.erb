@@ -21,6 +21,10 @@
       <table class="table">
         <tbody>
           <tr>
+            <td>投稿者</td>
+            <td><%= link_to @closet.user.name,  user_path(@closet.user.id) %></td>
+          </tr>
+          <tr>
             <td>購入日</td>
             <td><%= @closet.purchase_date %></td>
           </tr>

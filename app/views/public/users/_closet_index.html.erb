@@ -1,0 +1,58 @@
+ <div class="wrap">
+      <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a href="#tab1" class="nav-link active">春</a>
+      </li>
+      <li class="nav-item">
+        <a href="#tab2" class="nav-link ">夏</a>
+      </li>
+      <li class="nav-item">
+        <a href="#tab3" class="nav-link ">秋</a></a>
+      </li>
+      <li class="nav-item">
+        <a href="#tab4" class="nav-link ">冬</a>
+      </li>
+      <li class="nav-item">
+        <a href="#tab5" class="nav-link ">その他</a>
+      </li>
+    </ul>
+    <div id="tab-contents">
+      <div id="tab1" class="tab">
+        <% spring_all.each do |spring| %>
+          <%= link_to closet_path(spring.id) do %>
+            <%= image_tag spring.images[0].variant(resize_to_limit: [300, 400]).processed %>
+          <% end %>
+        <% end %>
+      </div>
+      <div id="tab2" class="tab">
+        <% summer_all.each do |summer| %>
+          <%= link_to closet_path(summer.id) do %>
+            <%= image_tag summer.images[0].variant(resize_to_limit: [300, 400]).processed %>
+          <% end %>
+        <% end %>
+      </div>
+      <div id="tab3" class="tab">
+        <% autumn_all.each do |autumn| %>
+          <%= link_to closet_path(autumn.id) do %>
+            <%= image_tag autumn.images[0].variant(resize_to_limit: [300, 400]).processed %>
+          <% end %>
+        <% end %>
+      </div>
+      <div id="tab4" class="tab">
+        <% winter_all.each do |winter| %>
+          <%= link_to closet_path(winter.id) do %>
+            <%= image_tag winter.images[0].variant(resize_to_limit: [300, 400]).processed %>
+          <% end %>
+        <% end %>
+      </div>
+      <div id="tab5" class="tab">
+        <% other_all.each do |other| %>
+          <%= link_to closet_path(other.id) do %>
+            <%= image_tag other.images[0].variant(resize_to_limit: [300, 400]).processed %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    </div>
+    <%= javascript_pack_tag 'tabbar' %>

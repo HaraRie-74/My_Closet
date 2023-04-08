@@ -3,64 +3,12 @@
     <h1>Closet_index</h1>
   </div>
   <!--<div class="row">-->
-    <div class="wrap">
-      <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a href="#tab1" class="nav-link active">春</a>
-      </li>
-      <li class="nav-item">
-        <a href="#tab2" class="nav-link ">夏</a>
-      </li>
-      <li class="nav-item">
-        <a href="#tab3" class="nav-link ">秋</a></a>
-      </li>
-      <li class="nav-item">
-        <a href="#tab4" class="nav-link ">冬</a>
-      </li>
-      <li class="nav-item">
-        <a href="#tab5" class="nav-link ">その他</a>
-      </li>
-    </ul>
-    <div id="tab-contents">
-      <div id="tab1" class="tab">
-        <% @spring.each do |spring| %>
-          <%= link_to closet_path(spring.id) do %>
-            <%= image_tag spring.images[0].variant(resize_to_limit: [300, 400]).processed %>
-          <% end %>
-        <% end %>
-      </div>
-      <div id="tab2" class="tab">
-        <% @summer.each do |summer| %>
-          <%= link_to closet_path(summer.id) do %>
-            <%= image_tag summer.images[0].variant(resize_to_limit: [300, 400]).processed %>
-          <% end %>
-        <% end %>
-      </div>
-      <div id="tab3" class="tab">
-        <% @autumn.each do |autumn| %>
-          <%= link_to closet_path(autumn.id) do %>
-            <%= image_tag autumn.images[0].variant(resize_to_limit: [300, 400]).processed %>
-          <% end %>
-        <% end %>
-      </div>
-      <div id="tab4" class="tab">
-        <% @winter.each do |winter| %>
-          <%= link_to closet_path(winter.id) do %>
-            <%= image_tag winter.images[0].variant(resize_to_limit: [300, 400]).processed %>
-          <% end %>
-        <% end %>
-      </div>
-      <div id="tab5" class="tab">
-        <% @other.each do |other| %>
-          <%= link_to closet_path(other.id) do %>
-            <%= image_tag other.images[0].variant(resize_to_limit: [300, 400]).processed %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-
-    </div>
+   <%= render 'closet_index',
+     spring_all: @spring_all,
+     summer_all: @summer_all,
+     autumn_all: @autumn_all,
+     winter_all: @winter_all,
+     other_all: @other_all %>
 　<!--</div>-->
   <%= link_to "新規投稿", new_closet_path, class:"btn btn-primary" %>
-  <%= javascript_pack_tag 'tabbar' %>
 </div>

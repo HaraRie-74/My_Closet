@@ -10,16 +10,24 @@ class Closet < ApplicationRecord
   has_many :tags, through: :closet_tags
 
   enum season: { spring:0, summer:1, autumn:2, winter:3, other:4 }
+  
 
+  # タグに関しての定義
   def save_tag(sent_tags)
+    # createアクションにて保存したcloset(self)に紐付いているタグが存在する場合、
+    # 「タグの名前を配列として」全て取得する。
     current_tags=self.tags.pluck(:tag_name) unless self.tags.nil?
+    # 既にclosetに存在するタグから、
+    # 送信されてきたタグを以外をold_tagsに代入。
     old_tags=current_tags - sent_tags
+    # 送信されてきたタグから、
+    # 既にclosetに存在するタグ以外をnew_tagsに代入。
     new_tags=sent_tags - current_tags
-
+    # 古いタグを削除
     old_tags.each do |old|
       self.closet_tags.delete ClosetTag.find_by(tag_id: old.id)
     end
-
+    # 新しいタグを保存。配列へ追加。
     new_tags.each do |new|
       new_closet_tag=Tag.find_or_create_by(tag_name: new)
       self.tags << new_closet_tag

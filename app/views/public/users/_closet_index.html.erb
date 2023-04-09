@@ -22,12 +22,18 @@
           <%= link_to closet_path(spring.id) do %>
             <%= image_tag spring.images[0].variant(resize_to_limit: [300, 400]).processed %>
           <% end %>
+          <% spring.tags.each do |tag| %>
+            <%= tag.tag_name %>
+          <% end %>
         <% end %>
       </div>
       <div id="tab2" class="tab">
         <% summer_all.each do |summer| %>
           <%= link_to closet_path(summer.id) do %>
             <%= image_tag summer.images[0].variant(resize_to_limit: [300, 400]).processed %>
+          <% end %>
+          <% summer.tags.each do |tag| %>
+            <%= tag.tag_name %>
           <% end %>
         <% end %>
       </div>
@@ -36,6 +42,9 @@
           <%= link_to closet_path(autumn.id) do %>
             <%= image_tag autumn.images[0].variant(resize_to_limit: [300, 400]).processed %>
           <% end %>
+          <% autumn.tags.each do |tag| %>
+            <%= tag.tag_name %>
+          <% end %>
         <% end %>
       </div>
       <div id="tab4" class="tab">
@@ -43,12 +52,18 @@
           <%= link_to closet_path(winter.id) do %>
             <%= image_tag winter.images[0].variant(resize_to_limit: [300, 400]).processed %>
           <% end %>
+          <% winter.tags.each do |tag| %>
+            <%= tag.tag_name %>
+          <% end %>
         <% end %>
       </div>
       <div id="tab5" class="tab">
         <% other_all.each do |other| %>
           <%= link_to closet_path(other.id) do %>
             <%= image_tag other.images[0].variant(resize_to_limit: [300, 400]).processed %>
+          <% end %>
+          <% other.tags.each do |tag| %>
+            <%= tag.tag_name %>
           <% end %>
         <% end %>
       </div>

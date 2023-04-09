@@ -8,6 +8,7 @@ class Public::ClosetsController < ApplicationController
   # 自分のみ
   def create
     closet=current_user.closets.new(closet_params)
+    # split(',')=>入力された値を,で区切り、配列にする
     tag_list=params[:closet][:tag_name].split(',')
     if closet.save
       closet.save_tag(tag_list)
@@ -38,6 +39,7 @@ class Public::ClosetsController < ApplicationController
 # 自分のみ
   def edit
     @closet=Closet.find(params[:id])
+    @closet_tag=@closet.tags
   end
 
   def update

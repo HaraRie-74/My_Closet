@@ -8,7 +8,7 @@ class Public::ClosetsController < ApplicationController
   # 自分のみ
   def create
     closet=current_user.closets.new(closet_params)
-    # split(',')=>入力された値を,で区切り、配列にする
+    # split(',')=>入力された文字列を,で区切り、配列にする
     tag_list=params[:closet][:tag_name].split(',')
     if closet.save
       closet.save_tag(tag_list)
@@ -39,13 +39,20 @@ class Public::ClosetsController < ApplicationController
 # 自分のみ
   def edit
     @closet=Closet.find(params[:id])
-    @closet_tag=@closet.tags
+    # join(',')=>配列を,で区切った文字列にする
+    @closet_tag=@closet.tags.pluck(:tag_name).join(',')
   end
 
   def update
     closet=Closet.find(params[:id])
-    closet.update(closet_params)
-    redirect_to new_closet_tag_path(closet.id)
+    # split(',')=>入力された文字列を,で区切り、配列にする
+    tag_list=params[:closet][:tag_name].split(',')
+    if closet.update(closet_params)
+      closet.save_tag(tag_list)
+      redirect_to closet_path(closet.id)
+    else
+      render 'edit'
+    end
   end
 
   def destroy

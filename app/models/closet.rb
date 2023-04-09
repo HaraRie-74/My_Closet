@@ -10,7 +10,7 @@ class Closet < ApplicationRecord
   has_many :tags, through: :closet_tags
 
   enum season: { spring:0, summer:1, autumn:2, winter:3, other:4 }
-  
+
 
   # タグに関しての定義
   def save_tag(sent_tags)
@@ -25,7 +25,8 @@ class Closet < ApplicationRecord
     new_tags=sent_tags - current_tags
     # 古いタグを削除
     old_tags.each do |old|
-      self.closet_tags.delete ClosetTag.find_by(tag_id: old.id)
+      old_tag=self.tags.where(tag_name: old)
+      self.closet_tags.delete ClosetTag.find_by(tag_id: old_tag)
     end
     # 新しいタグを保存。配列へ追加。
     new_tags.each do |new|

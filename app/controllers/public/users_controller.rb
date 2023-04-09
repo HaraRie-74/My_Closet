@@ -1,11 +1,13 @@
 class Public::UsersController < ApplicationController
   # 自分・他人
+
   def show
     @user=User.find(params[:id])
   end
 
   # 他人
   def index
+
     @users=User.all
   end
 

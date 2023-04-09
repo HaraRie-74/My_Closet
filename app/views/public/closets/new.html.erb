@@ -1,38 +1,6 @@
 <div class="container">
   <div class="row">
     <h1>新規投稿ページ</h1>
-    <%= form_with model: @closet, url:closets_path, method: :post do |f| %>
-    <table class="table">
-      <tbody>
-        <tr>
-          <td>購入日</td>
-          <td><%= f.date_field :purchase_date %></td>
-        </tr>
-        <tr>
-          <td>購入店舗</td>
-          <td><%= f.text_field :purchase_store %></td>
-        </tr>
-        <tr>
-          <td>値段</td>
-          <td><%= f.number_field :purchase_price, min:0 %> 円</td>
-        </tr>
-        <tr>
-          <td>季節</td>
-          <td><%= f.select :season, Closet.seasons.keys.map {|k| [I18n.t("enums.closet.season.#{k}"), k]} %></td>
-        </tr>
-        <tr>
-          <td>メモ</td>
-          <td><%= f.text_area :memo %></td>
-        </tr>
-        <tr>
-          <td>画像選択</td>
-          <td><%= f.file_field :images, multiple: true %></td>
-        </tr>
-        <tr>
-          <td colspan="2"><%= f.submit "タグをつける" %></td>
-        </tr>
-      </tbody>
-    </table>
-    <% end %>
+    <%= render 'closet_form', closet: @closet %>
   </div>
 </div>

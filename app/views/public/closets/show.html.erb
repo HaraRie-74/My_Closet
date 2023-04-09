@@ -53,6 +53,10 @@
               <% end %>
             </td>
           </tr>
+          <tr>
+            <td><%= link_to "編集する", edit_closet_path(@closet.id), class:"btn btn-success" %></td>
+            <td><%= link_to "削除する", closet_path(@closet.id), method: :delete, class:"btn btn-danger", "data-confirm"=>"本当に削除しますか？" %></td>
+          </tr>
         </tbody>
       </table>
     </div>

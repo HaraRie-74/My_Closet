@@ -34,12 +34,19 @@ class Public::ClosetsController < ApplicationController
 
 # 自分のみ
   def edit
+    @closet=Closet.find(params[:id])
   end
 
   def update
+    closet=Closet.find(params[:id])
+    closet.update(closet_params)
+    redirect_to new_closet_tag_path(closet.id)
   end
 
   def destroy
+    closet=Closet.find(params[:id])
+    closet.destroy
+    redirect_to closet_index_path(closet.user.id)
   end
 
   private

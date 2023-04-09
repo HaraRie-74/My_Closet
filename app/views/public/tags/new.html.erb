@@ -5,7 +5,7 @@
       <%= f.submit "タグ追加" %>
     <% end %>
     <% @closet_tags.each do |closet_tag| %>
-      <%= closet_tag.tag.tag_name %>
+      <%= closet_tag.tag.tag_name %> <%= link_to "×", closet_tag_path(@closet.id, closet_tag.tag.id) %>
     <% end %>
     <%= link_to "投稿する", closet_path(@closet.id), class:"btn btn-primary" %>
   </div>

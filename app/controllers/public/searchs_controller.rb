@@ -1,6 +1,6 @@
 class Public::SearchsController < ApplicationController
 
-  def search
+  def word_search
     @model=params[:model]
     @content=params[:content]
     if @content.blank?
@@ -15,6 +15,16 @@ class Public::SearchsController < ApplicationController
         @other_all=@records.where(season: 4)
       end
     end
+  end
+
+  def tag_search
+    @tag=Tag.find(params[:tag_id])
+    @closets=@tag.closets.all
+    @spring_all=@closets.where(season: 0)
+    @summer_all=@closets.where(season: 1)
+    @autumn_all=@closets.where(season: 2)
+    @winter_all=@closets.where(season: 3)
+    @other_all=@closets.where(season: 4)
   end
 
 

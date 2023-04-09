@@ -11,14 +11,13 @@ class Public::UsersController < ApplicationController
     @users=User.all
   end
 
-  # 自分・他人
+  # 自分
   def closet_index
-    user=User.find(params[:id])
-    @spring_all=user.closets.where(season: 0)
-    @summer_all=user.closets.where(season: 1)
-    @autumn_all=user.closets.where(season: 2)
-    @winter_all=user.closets.where(season: 3)
-    @other_all=user.closets.where(season: 4)
+    @spring_all=current_user.closets.where(season: 0)
+    @summer_all=current_user.closets.where(season: 1)
+    @autumn_all=current_user.closets.where(season: 2)
+    @winter_all=current_user.closets.where(season: 3)
+    @other_all=current_user.closets.where(season: 4)
   end
 
  # 自分のみ

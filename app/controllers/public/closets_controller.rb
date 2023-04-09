@@ -25,7 +25,6 @@ class Public::ClosetsController < ApplicationController
     @autumn_all=Closet.where(season: 2)
     @winter_all=Closet.where(season: 3)
     @other_all=Closet.where(season: 4)
-    @tag_list=Tag.all
 
   end
 
@@ -57,8 +56,16 @@ class Public::ClosetsController < ApplicationController
 
   def destroy
     closet=Closet.find(params[:id])
-    closet.destroy
-    redirect_to closet_index_path(closet.user.id)
+    if closet.destroy
+      @spring_all=Closet.where(season: 0)
+      @summer_all=Closet.where(season: 1)
+      @autumn_all=Closet.where(season: 2)
+      @winter_all=Closet.where(season: 3)
+      @other_all=Closet.where(season: 4)
+      redirect_to closet_index_path(current_user.id)
+    else
+      render 'show'
+    end
   end
 
   private

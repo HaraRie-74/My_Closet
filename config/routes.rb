@@ -10,10 +10,13 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
 
-    get 'closets/search' => 'searchs#search'
+    get '/word_search' => 'searchs#word_search'
+    resources :tags do
+      get '/search' => 'searchs#tag_search'
+    end
+
     resources :closets
-    
-    get 'users/search' => 'searchs#search'
+
     resources :users, only:[:show, :index, :edit, :update]
     get 'users/:id/closetindex' => 'users#closet_index', as:'closet_index'
     get 'users/quitcheck' => 'users#quit_check'

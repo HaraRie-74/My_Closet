@@ -23,7 +23,7 @@
             <%= image_tag spring.images[0].variant(resize_to_limit: [300, 400]).processed %>
           <% end %>
           <% spring.tags.each do |tag| %>
-            <%= tag.tag_name %>
+            <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
         <% end %>
       </div>
@@ -33,7 +33,7 @@
             <%= image_tag summer.images[0].variant(resize_to_limit: [300, 400]).processed %>
           <% end %>
           <% summer.tags.each do |tag| %>
-            <%= tag.tag_name %>
+            <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
         <% end %>
       </div>
@@ -43,7 +43,7 @@
             <%= image_tag autumn.images[0].variant(resize_to_limit: [300, 400]).processed %>
           <% end %>
           <% autumn.tags.each do |tag| %>
-            <%= tag.tag_name %>
+            <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
         <% end %>
       </div>
@@ -53,7 +53,7 @@
             <%= image_tag winter.images[0].variant(resize_to_limit: [300, 400]).processed %>
           <% end %>
           <% winter.tags.each do |tag| %>
-            <%= tag.tag_name %>
+            <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
         <% end %>
       </div>
@@ -63,7 +63,7 @@
             <%= image_tag other.images[0].variant(resize_to_limit: [300, 400]).processed %>
           <% end %>
           <% other.tags.each do |tag| %>
-            <%= tag.tag_name %>
+            <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
         <% end %>
       </div>

@@ -11,9 +11,7 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about'
 
     get 'closets/search' => 'searchs#search'
-    resources :closets do
-      resources :tags, only:[:new, :create, :destroy]
-    end
+    resources :closets
     
     get 'users/search' => 'searchs#search'
     resources :users, only:[:show, :index, :edit, :update]

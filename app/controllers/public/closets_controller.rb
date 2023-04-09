@@ -3,14 +3,15 @@ class Public::ClosetsController < ApplicationController
   # 自分のみ
   def new
     @closet=Closet.new
-    @tag=Tag.new
   end
 
   # 自分のみ
   def create
     closet=current_user.closets.new(closet_params)
+    tag_list=params[:closet][:tag_name].split(',')
     if closet.save
-      redirect_to  new_closet_tag_path(closet.id)
+      closet.save_tag(tag_list)
+      redirect_to closet_path(closet.id)
     else
       render "new"
     end
@@ -23,13 +24,15 @@ class Public::ClosetsController < ApplicationController
     @autumn_all=Closet.where(season: 2)
     @winter_all=Closet.where(season: 3)
     @other_all=Closet.where(season: 4)
+    @tag_list=Tag.all
+
   end
 
 
 # 自分・他人
   def show
     @closet=Closet.find(params[:id])
-    @closet_tags=ClosetTag.where(closet_id: @closet.id)
+    @closet_tags=@closet.tags
   end
 
 # 自分のみ

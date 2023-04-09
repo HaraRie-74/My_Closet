@@ -18,6 +18,10 @@
           <td><%= f.select :season, Closet.seasons.keys.map {|k| [I18n.t("enums.closet.season.#{k}"), k]} %></td>
         </tr>
         <tr>
+          <td>スペースを入力することで複数のタグを付けることができます。</td>
+          <td><%= f.text_field :tag_name %></td>
+        </tr>
+        <tr>
           <td>メモ</td>
           <td><%= f.text_area :memo %></td>
         </tr>
@@ -26,7 +30,7 @@
           <td><%= f.file_field :images, multiple: true %></td>
         </tr>
         <tr>
-          <td colspan="2"><%= f.submit "タグをつける" %></td>
+          <td colspan="2"><%= f.submit %></td>
         </tr>
       </tbody>
     </table>

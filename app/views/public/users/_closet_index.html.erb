@@ -25,6 +25,7 @@
           <% spring.tags.each do |tag| %>
             <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
+          <%= spring.closet_comments.count %>コメント
         <% end %>
       </div>
       <div id="tab2" class="tab">
@@ -35,6 +36,7 @@
           <% summer.tags.each do |tag| %>
             <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
+          <%= summer.closet_comments.count %>コメント
         <% end %>
       </div>
       <div id="tab3" class="tab">
@@ -45,6 +47,7 @@
           <% autumn.tags.each do |tag| %>
             <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
+          <%= autumn.closet_comments.count %>コメント
         <% end %>
       </div>
       <div id="tab4" class="tab">
@@ -55,6 +58,7 @@
           <% winter.tags.each do |tag| %>
             <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
+          <%= winter.closet_comments.count %>コメント
         <% end %>
       </div>
       <div id="tab5" class="tab">
@@ -65,6 +69,7 @@
           <% other.tags.each do |tag| %>
             <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
+          <%= other.closet_comments.count %>コメント
         <% end %>
       </div>
     </div>

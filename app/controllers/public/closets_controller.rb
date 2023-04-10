@@ -33,6 +33,7 @@ class Public::ClosetsController < ApplicationController
   def show
     @closet=Closet.find(params[:id])
     @closet_tags=@closet.tags
+    @comment=ClosetComment.new
   end
 
 # 自分のみ

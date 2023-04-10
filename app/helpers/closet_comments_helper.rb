@@ -1,0 +1,2 @@
+module ClosetCommentsHelper
+end

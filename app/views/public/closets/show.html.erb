@@ -54,14 +54,25 @@
             </td>
           </tr>
           <tr>
-            <td><%= link_to "編集する", edit_closet_path(@closet.id), class:"btn btn-success" %></td>
-            <td><%= link_to "削除する", closet_path(@closet.id), method: :delete, class:"btn btn-danger", "data-confirm"=>"本当に削除しますか？" %></td>
-          </tr>
-          <tr>
-            <td colspan="2"><%= link_to "Closetへ戻る", :back, class:"btn btn-primary" %></td>
+            <% if @closet.user == current_user %>
+              <td><%= link_to "編集する", edit_closet_path(@closet.id), class:"btn btn-success" %></td>
+              <td><%= link_to "削除する", closet_path(@closet.id), method: :delete, class:"btn btn-danger", "data-confirm"=>"本当に削除しますか？" %></td>
+            <% end %>
           </tr>
         </tbody>
       </table>
+      <div class="comment">
+        <h1>コメント（<%= @closet.closet_comments.count %>件）</h1>
+        <%= form_with model: [@closet, @comment], url:closet_closet_comments_path(@closet.id), method: :post do |f| %>
+          <%= f.text_area :comment, placeholder: "コメントをここに" %>
+          <%= f.submit "投稿" %>
+        <% end %>
+        <% @closet.closet_comments.each do |comment| %>
+          <%= comment.user.name %> &emsp; <%= comment.created_at.strftime('%Y/%m/%d') %></br >
+          <%= comment.comment %>
+          <%= link_to "コメント削除", closet_closet_comment_path(@closet.id, comment.id), class:"bnt btn-danger", method: :delete %></br >
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

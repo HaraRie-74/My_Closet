@@ -15,7 +15,9 @@ Rails.application.routes.draw do
       get '/search' => 'searchs#tag_search'
     end
 
-    resources :closets
+    resources :closets do
+      resources :closet_comments, only:[:create, :destroy]
+    end
 
     resources :users, only:[:show, :index, :edit, :update]
     get 'users/:id/closetindex' => 'users#closet_index', as:'closet_index'

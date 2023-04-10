@@ -12,6 +12,9 @@ class Closet < ApplicationRecord
   # コメントのリレーション
   has_many :closet_comments, dependent: :destroy
 
+  # いいねのリレーションシップ
+  has_many :favorites, dependent: :destroy
+
   enum season: { spring:0, summer:1, autumn:2, winter:3, other:4 }
 
 
@@ -37,5 +40,11 @@ class Closet < ApplicationRecord
       self.tags << new_closet_tag
     end
   end
+
+  # いいねしているか判断する定義
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+
 
 end

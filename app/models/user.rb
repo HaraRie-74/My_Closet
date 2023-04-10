@@ -7,9 +7,12 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   has_many :closets, dependent: :destroy
-  
+
   # コメントのリレーションシップ
   has_many :closet_comments, dependent: :destroy
+
+  # いいねのリレーションシップ
+  has_many :favorites, dependent: :destroy
 
   def get_profile_image(width,height)
     unless profile_image.attached?

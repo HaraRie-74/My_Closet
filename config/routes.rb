@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
     resources :closets do
       resources :closet_comments, only:[:create, :destroy]
+      resource :favorites, only:[:create, :destroy]
     end
 
     resources :users, only:[:show, :index, :edit, :update]

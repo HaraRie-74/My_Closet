@@ -25,6 +25,7 @@
           <% spring.tags.each do |tag| %>
             <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
+          <%= render 'public/favorites/favorite', obj: spring %>
           <%= spring.closet_comments.count %>コメント
         <% end %>
       </div>
@@ -36,6 +37,7 @@
           <% summer.tags.each do |tag| %>
             <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
+          <%= render 'public/favorites/favorite', obj: summer %>
           <%= summer.closet_comments.count %>コメント
         <% end %>
       </div>
@@ -47,6 +49,7 @@
           <% autumn.tags.each do |tag| %>
             <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
+          <%= render 'public/favorites/favorite', obj: autumn %>
           <%= autumn.closet_comments.count %>コメント
         <% end %>
       </div>
@@ -58,6 +61,7 @@
           <% winter.tags.each do |tag| %>
             <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
+          <%= render 'public/favorites/favorite', obj: winter %>
           <%= winter.closet_comments.count %>コメント
         <% end %>
       </div>
@@ -69,6 +73,7 @@
           <% other.tags.each do |tag| %>
             <%= link_to tag.tag_name, tag_search_path(tag.id) %>
           <% end %>
+          <%= render 'public/favorites/favorite', obj: other %>
           <%= other.closet_comments.count %>コメント
         <% end %>
       </div>

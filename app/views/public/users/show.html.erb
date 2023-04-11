@@ -6,6 +6,8 @@
     <div class="col-5">
       <h1>マイページ</h1>
       <%= link_to "Closetへ！", closet_index_path(@user.id), class:"btn btn-primary" %>
+      <%= link_to "いいね一覧", favorite_path(current_user) %>
+      <%= render 'follow_button', user: @user %>
       <table class="table">
         <tbody>
           <tr>
@@ -15,6 +17,14 @@
           <tr>
             <td>自己紹介</td>
             <td><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <td>フォロー中</td>
+            <td><%= link_to @user.following.count, following_user_path(@user) %></td>
+          </tr>
+          <tr>
+            <td>フォロワー</td>
+            <td><%= link_to  @user.follows.count, follows_user_path(@user) %></td>
           </tr>
           <tr>
             <td colspan="2"><%= link_to "会員情報編集", edit_user_path(@user.id), class:"btn btn-secondary" %></td>

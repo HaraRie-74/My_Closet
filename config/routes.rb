@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'relationships/create'
+    get 'relationships/destroy'
+  end
 # 顧客用
   devise_for :users,skip:[:passwords],controllers:{
     registrations:"public/registrations",
@@ -20,8 +24,14 @@ Rails.application.routes.draw do
       resource :favorites, only:[:create, :destroy]
     end
 
-    resources :users, only:[:show, :index, :edit, :update]
+    resources :users, only:[:show, :index, :edit, :update] do
+      resource :relationships, only:[:create, :destroy]
+      member do
+        get :following, :follows
+      end
+    end
     get 'users/:id/closetindex' => 'users#closet_index', as:'closet_index'
+    get 'users/:id/favorite' => 'users#favorite', as:'favorite'
     get 'users/quitcheck' => 'users#quit_check'
     patch 'users/quit' => 'users#quit'
   end

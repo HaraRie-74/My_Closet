@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   # いいねのリレーションシップ
   has_many :favorites, dependent: :destroy
+  has_many :favorited_closets, through: :favorites, source: :closet
 
   # フォローのリレーションシップ
   has_many :active_relationships, class_name:"Relationship", foreign_key:"follow_id", dependent: :destroy

@@ -20,11 +20,11 @@ class Public::SearchsController < ApplicationController
   def tag_search
     @tag=Tag.find(params[:tag_id])
     @closets=@tag.closets.all
-    @spring_all=@closets.where(season: 0)
-    @summer_all=@closets.where(season: 1)
-    @autumn_all=@closets.where(season: 2)
-    @winter_all=@closets.where(season: 3)
-    @other_all=@closets.where(season: 4)
+    @spring_all=@closets.where(season: 0).publish
+    @summer_all=@closets.where(season: 1).publish
+    @autumn_all=@closets.where(season: 2).publish
+    @winter_all=@closets.where(season: 3).publish
+    @other_all=@closets.where(season: 4).publish
   end
 
 

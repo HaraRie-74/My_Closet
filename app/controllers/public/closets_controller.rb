@@ -25,7 +25,6 @@ class Public::ClosetsController < ApplicationController
     @autumn_all=Closet.where(season: 2).publish
     @winter_all=Closet.where(season: 3).publish
     @other_all=Closet.where(season: 4).publish
-
   end
 
 

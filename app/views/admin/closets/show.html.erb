@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <% @closet.images.each do |image| %>
+            <div class="swiper-slide">
+              <%= image_tag image.variant(resize_to_limit: [300, 400]).processed %>
+            </div>
+          <% end %>
+        </div>
+        <!--ページネーションの要素-->
+        <div class="swiper-pagination"></div>
+        <!--ナビゲーションボタン （前、次）-->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+    <div class="col-5">
+      <h1>closet_show</h1>
+      <%= render 'public/favorites/favorite', obj: @closet %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>投稿者</td>
+            <td><%= link_to @closet.user.name,  user_path(@closet.user.id) %></td>
+          </tr>
+          <tr>
+            <td>購入日</td>
+            <td><%= @closet.purchase_date %></td>
+          </tr>
+          <tr>
+            <td>購入店舗</td>
+            <td><%= @closet.purchase_store %></td>
+          </tr>
+          <tr>
+            <td>値段</td>
+            <td><%= @closet.purchase_price %> 円</td>
+          </tr>
+          <tr>
+            <td>季節</td>
+            <td><%= @closet.season_i18n %></td>
+          </tr>
+          <tr></tr>
+          <tr>
+            <td>タグ</td>
+            <td>
+              <% @closet_tags.each do |closet_tag| %>
+                <%= closet_tag.tag_name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>メモ</td>
+            <td><%= @closet.memo %></td>
+          </tr>
+          <tr>
+            <td>公開・非公開</td>
+            <td>
+              <% if @closet.is_published_flag == true %>
+                <p>公開</p>
+              <% else %>
+                <p>非公開</p>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <% if @closet.user == current_user %>
+              <td><%= link_to "編集する", edit_closet_path(@closet.id), class:"btn btn-success" %></td>
+              <td><%= link_to "削除する", closet_path(@closet.id), method: :delete, class:"btn btn-danger", "data-confirm"=>"本当に削除しますか？" %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <div class="comment">
+        <h1>コメント（<%= @closet.closet_comments.count %>件）</h1>
+        <%= form_with model: [@closet, @comment], url:closet_closet_comments_path(@closet.id), method: :post do |f| %>
+          <%= f.text_area :comment, placeholder: "コメントをここに" %>
+          <%= f.submit "投稿" %>
+        <% end %>
+        <% @closet.closet_comments.each do |comment| %>
+          <%= comment.user.name %> &emsp; <%= comment.created_at.strftime('%Y/%m/%d') %></br >
+          <%= comment.comment %>
+          <%= link_to "コメント削除", closet_closet_comment_path(@closet.id, comment.id), class:"bnt btn-danger", method: :delete %></br >
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

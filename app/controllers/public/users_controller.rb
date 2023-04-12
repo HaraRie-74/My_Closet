@@ -33,11 +33,11 @@ class Public::UsersController < ApplicationController
   end
 
   def favorite
-    favorite=current_user.favorites
-    @spring_all=[]
-    favorite.each do |fav|
-      @spring_all << Closet.where(id: fav.closet_id)
-    end
+    # favorite=current_user.favorites
+    # @spring_all=[]
+    # favorite.each do |fav|
+    #   @spring_all << Closet.where(id: fav.closet_id)
+    # end
 
     # closet=Closet.find(params[favorite])
     # @spring_all=closet.where(season: 0)
@@ -46,13 +46,18 @@ class Public::UsersController < ApplicationController
     # @winter_all=closet.where(season: 3)
     # @other_all=closet.where(season: 4)
 
-    # favorite=current_user.favorites
-    # @spring_all=favorite.closet.where(season: 0)
-    # @summer_all=favorite.closet.where(season: 1)
-    # @autumn_all=favorite.closet.where(season: 2)
-    # @winter_all=favorite.closet.where(season: 3)
-    # @other_all=favorite.closet.where(season: 4)
-  end
+    closets = current_user.favorited_closets
+    @spring_all = closets.spring
+    @summer_all = closets.summer
+    @autumn_all = closets.autumn
+    @winter_all = closets.winter
+    @other_all = closets.other
+
+    # closet=Closet.all
+    # favorite=closet.favorites.where(user_id: current_user.id)
+    # @spring_all=favorite.closets.where(season: 0)
+
+    end
 
   # フォロー中
   def following

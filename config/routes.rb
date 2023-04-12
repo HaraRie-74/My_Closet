@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'relationships/create'
-    get 'relationships/destroy'
-  end
 # 顧客用
   devise_for :users,skip:[:passwords],controllers:{
     registrations:"public/registrations",
@@ -36,10 +32,19 @@ Rails.application.routes.draw do
   end
 
 
+
 # 管理者用
   devise_for :admin,skip:[:registrations,:passwords],controllers:{
     sessions:"admin/sessions"
   }
+
+  namespace :admin do
+    root to: 'homes#top'
+    get '/about' => 'homes#about'
+
+    resources :closets, only:[:index, :show]
+    resources :users, only:[:index, :show]
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

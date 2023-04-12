@@ -33,11 +33,12 @@ class Public::UsersController < ApplicationController
   end
 
   def favorite
-    # favorite=current_user.favorites.all
-    # @spring_all=[]
-    # favorite.each do |fav|
-    #   @spring_all << Closet.where(id: fav.id)
-    # end
+    favorite=current_user.favorites
+    @spring_all=[]
+    favorite.each do |fav|
+      @spring_all << Closet.where(id: fav.closet_id)
+    end
+
     # closet=Closet.find(params[favorite])
     # @spring_all=closet.where(season: 0)
     # @summer_all=closet.where(season: 1)

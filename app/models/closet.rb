@@ -46,5 +46,8 @@ class Closet < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  # 公開・非公開
+  scope :publish, -> {where(is_published_flag: true)}
+  scope :unpublish, -> {where(is_published_flag: false)}
 
 end

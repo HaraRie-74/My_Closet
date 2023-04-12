@@ -27,11 +27,10 @@ Rails.application.routes.draw do
     resources :users, only:[:show, :index, :edit, :update] do
       resource :relationships, only:[:create, :destroy]
       member do
-        get :following, :follows
+        get :following, :follows, :favorite
       end
     end
     get 'users/:id/closetindex' => 'users#closet_index', as:'closet_index'
-    get 'users/:id/favorite' => 'users#favorite', as:'favorite'
     get 'users/quitcheck' => 'users#quit_check'
     patch 'users/quit' => 'users#quit'
   end

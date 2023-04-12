@@ -8,11 +8,11 @@ class Public::SearchsController < ApplicationController
     else
       @records=search_for(@model, @content)
       if @model=='closet'
-        @spring_all=@records.where(season: 0)
-        @summer_all=@records.where(season: 1)
-        @autumn_all=@records.where(season: 2)
-        @winter_all=@records.where(season: 3)
-        @other_all=@records.where(season: 4)
+        @spring_all=@records.where(season: 0).publish
+        @summer_all=@records.where(season: 1).publish
+        @autumn_all=@records.where(season: 2).publish
+        @winter_all=@records.where(season: 3).publish
+        @other_all=@records.where(season: 4).publish
       end
     end
   end

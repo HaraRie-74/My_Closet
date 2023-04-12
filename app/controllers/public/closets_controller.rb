@@ -20,11 +20,11 @@ class Public::ClosetsController < ApplicationController
 
   # 他人のみ
   def index
-    @spring_all=Closet.where(season: 0)
-    @summer_all=Closet.where(season: 1)
-    @autumn_all=Closet.where(season: 2)
-    @winter_all=Closet.where(season: 3)
-    @other_all=Closet.where(season: 4)
+    @spring_all=Closet.where(season: 0).publish
+    @summer_all=Closet.where(season: 1).publish
+    @autumn_all=Closet.where(season: 2).publish
+    @winter_all=Closet.where(season: 3).publish
+    @other_all=Closet.where(season: 4).publish
 
   end
 
@@ -72,7 +72,7 @@ class Public::ClosetsController < ApplicationController
   private
 
   def closet_params
-    params.require(:closet).permit(:purchase_date, :purchase_store, :purchase_price, :season, :memo, images:[])
+    params.require(:closet).permit(:purchase_date, :purchase_store, :purchase_price, :season, :memo, :is_published_flag, images:[])
   end
 
 end

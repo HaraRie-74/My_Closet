@@ -43,14 +43,24 @@
           </tr>
           <tr></tr>
           <tr>
-            <td>メモ</td>
-            <td><%= @closet.memo %></td>
-          </tr>
-          <tr>
             <td>タグ</td>
             <td>
               <% @closet_tags.each do |closet_tag| %>
                 <%= closet_tag.tag_name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>メモ</td>
+            <td><%= @closet.memo %></td>
+          </tr>
+          <tr>
+            <td>公開・非公開</td>
+            <td>
+              <% if @closet.is_published_flag == true %>
+                <p>公開</p>
+              <% else %>
+                <p>非公開</p>
               <% end %>
             </td>
           </tr>

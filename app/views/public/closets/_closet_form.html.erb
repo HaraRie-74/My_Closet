@@ -26,6 +26,15 @@
           <td><%= f.text_area :memo %></td>
         </tr>
         <tr>
+          <td>公開・非公開</td>
+          <td>
+            <%= f.radio_button :is_published_flag, :true %>
+            <%= f.label :is_published_flag_true, "公開" %> &emsp;
+            <%= f.radio_button :is_published_flag, :false %>
+            <%= f.label :is_published_flag_false, "非公開" %>
+          </td>
+        </tr>
+        <tr>
           <td>画像選択</td>
           <td><%= f.file_field :images, multiple: true %></td>
         </tr>

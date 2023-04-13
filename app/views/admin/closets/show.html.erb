@@ -18,7 +18,7 @@
     </div>
     <div class="col-5">
       <h1>closet_show</h1>
-      <%= render 'public/favorites/favorite', obj: @closet %>
+      <i class="far fa-heart"></i><%= @closet.favorites.count %> &thinsp; いいね
       <table class="table">
         <tbody>
           <tr>
@@ -74,14 +74,10 @@
       </table>
       <div class="comment">
         <h1>コメント（<%= @closet.closet_comments.count %>件）</h1>
-        <%= form_with model: [@closet, @comment], url:closet_closet_comments_path(@closet.id), method: :post do |f| %>
-          <%= f.text_area :comment, placeholder: "コメントをここに" %>
-          <%= f.submit "投稿" %>
-        <% end %>
         <% @closet.closet_comments.each do |comment| %>
           <%= comment.user.name %> &emsp; <%= comment.created_at.strftime('%Y/%m/%d') %></br >
           <%= comment.comment %>
-          <%= link_to "コメント削除", closet_closet_comment_path(@closet.id, comment.id), class:"bnt btn-danger", method: :delete %></br >
+          <%= link_to "コメント削除", admin_closet_closet_comment_path(@closet.id, comment.id), class:"bnt btn-danger", method: :delete %></br >
         <% end %>
       </div>
     </div>

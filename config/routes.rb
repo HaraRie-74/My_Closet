@@ -42,8 +42,11 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
 
-    resources :closets, only:[:index, :show]
-    resources :users, only:[:index, :show]
+    resources :closets, only:[:index, :show] do
+      resources :closet_comments, only:[:destroy]
+    # patch 'closet_comments/:id' => 'closet_comments#update', as:'admin_comment'
+    end
+      resources :users, only:[:index, :show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

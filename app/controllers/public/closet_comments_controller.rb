@@ -1,9 +1,9 @@
 class Public::ClosetCommentsController < ApplicationController
 
   def create
-    closet=Closet.find(params[:closet_id])
-    comment=current_user.closet_comments.new(closet_comment_params)
-    comment.closet_id=closet.id
+    closet = Closet.find(params[:closet_id])
+    comment = current_user.closet_comments.new(closet_comment_params)
+    comment.closet_id = closet.id
     comment.save
     redirect_to closet_path(closet.id)
   end

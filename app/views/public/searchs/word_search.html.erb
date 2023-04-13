@@ -1,4 +1,4 @@
-<% if @model=='user' %>
+<% if @model == 'user' %>
   <h1>【会員の検索結果】検索ワード：<%= @content %></h1>
   <%= render 'public/searchs/user_search' %>
   <% if @records.present? %>
@@ -6,7 +6,7 @@
   <% else %>
     <p>データはありません</p>
   <% end %>
-<% elsif @model=='closet' %>
+<% elsif @model == 'closet' %>
   <h1>【Closetの検索結果】検索ワード：<%= @content %></h1>
   <%= render 'public/searchs/closet_search' %>
   <% if @records.present? %>

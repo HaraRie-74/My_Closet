@@ -1,0 +1,15 @@
+<h1>「<%= @tag_word %>」タグの検索</h1>
+<%= form_with url:tag_name_search_path, method: :get do |f| %>
+  <%= f.text_field :tag_word, placeholder: "タグ名で検索" %>
+  <%= f.submit "検索" %>
+  <% end %>
+  <% if @tag.present? %>
+    <%= render 'public/users/closet_index',
+      spring_all: @spring_all,
+      summer_all: @summer_all,
+      autumn_all: @autumn_all,
+      winter_all: @winter_all,
+      other_all: @other_all %>
+  <% else %>
+    <p>データはありません</p>
+  <% end %>

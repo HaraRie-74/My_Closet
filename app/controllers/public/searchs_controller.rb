@@ -27,6 +27,21 @@ class Public::SearchsController < ApplicationController
     @other_all = @closets.other.publish
   end
 
+  def tag_name_search
+    @tag_word = params[:tag_word]
+    @tag = Tag.find_by(tag_name: @tag_word)
+    if @tag.blank?
+      @records = []
+    else
+      closets = @tag.closets.all
+      @spring_all = closets.spring.publish
+      @summer_all = closets.summer.publish
+      @autumn_all = closets.autumn.publish
+      @winter_all = closets.winter.publish
+      @other_all = closets.other.publish
+    end
+  end
+
 
   private
 

@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     registrations:"public/registrations",
     sessions:"public/sessions"
   }
+  # ゲストユーザー
+  devise_scope :user do
+    post 'users/guest_sign_in' => 'public/sessions#guest_sign_in'
+  end
 
   scope module: :public do
     root to: 'homes#top'
@@ -23,12 +27,11 @@ Rails.application.routes.draw do
     resources :users, only:[:show, :index, :edit, :update] do
       resource :relationships, only:[:create, :destroy]
       member do
-        get :following, :follows, :favorite
+        get :following, :follows, :favorite, :quit_check
+        patch :quit
       end
     end
     get 'users/:id/closetindex' => 'users#closet_index', as:'closet_index'
-    get 'users/quitcheck' => 'users#quit_check'
-    patch 'users/quit' => 'users#quit'
   end
 
 
@@ -46,7 +49,11 @@ Rails.application.routes.draw do
       resources :closet_comments, only:[:destroy]
     # patch 'closet_comments/:id' => 'closet_comments#update', as:'admin_comment'
     end
-      resources :users, only:[:index, :show]
+    resources :users, only:[:index, :show] do
+      member do
+        get :closet_index, :following, :follows, :favorite
+      end
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

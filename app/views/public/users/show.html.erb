@@ -27,7 +27,12 @@
             <td><%= link_to  @user.follows.count, follows_user_path(@user) %></td>
           </tr>
           <tr>
-            <td colspan="2"><%= link_to "会員情報編集", edit_user_path(@user.id), class:"btn btn-secondary" %></td>
+            <td colspan="2">
+              <% if @user.name != "guestuser" %>
+                <%= link_to "会員情報編集", edit_user_path(@user.id), class:"btn btn-secondary" %>
+                <%= link_to "退会する", quit_check_user_path(@user.id), class:"btn btn-danger" %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>

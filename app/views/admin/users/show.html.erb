@@ -1,2 +1,35 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <%= image_tag @user.get_profile_image(200,100) %>
+    </div>
+    <div class="col-5">
+      <h1>マイページ</h1>
+      <%= link_to "Closetへ！", closet_index_admin_user_path(@user.id), class:"btn btn-primary" %>
+      <%= link_to "いいね一覧", favorite_admin_user_path(@user.id) %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>ユーザー名</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td>自己紹介</td>
+            <td><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <td>フォロー中</td>
+            <td><%= link_to @user.following.count, following_admin_user_path(@user) %></td>
+          </tr>
+          <tr>
+            <td>フォロワー</td>
+            <td><%= link_to  @user.follows.count, follows_admin_user_path(@user) %></td>
+          </tr>
+          <tr>
+            <td colspan="2"><%= link_to "会員情報編集", edit_user_path(@user.id), class:"btn btn-secondary" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

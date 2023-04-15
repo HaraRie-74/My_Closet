@@ -39,7 +39,7 @@ class Public::UsersController < ApplicationController
     @autumn_all = closets.autumn
     @winter_all = closets.winter
     @other_all = closets.other
-    end
+  end
 
   # フォロー中
   def following
@@ -55,10 +55,17 @@ class Public::UsersController < ApplicationController
 
   # 自分のみ
   def quit_check
+    @user = current_user
   end
 
   # 自分のみ
   def quit
+    user = User.find(params[:id])
+    user.update(is_deleted: true)
+    # 全てのsessionを破棄
+    reset_session
+    flash[:notice] = "退会処理が完了しました。ご利用ありがとうございました。"
+    redirect_to root_path
   end
 
 

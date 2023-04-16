@@ -7,7 +7,6 @@ class Public::UsersController < ApplicationController
 
   # 他人
   def index
-
     @users = User.all
   end
 

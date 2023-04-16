@@ -18,16 +18,16 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-  
+
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to user_path(user), notice: 'guestuserでログインしました。'
+    redirect_to root_path, notice: 'guestuserでログインしました。'
   end
-  
+
 
   protected
-  
+
   # 退会しているかを判断するメソッド
   def user_state
     @user=User.find_by(email:params[:user][:email])

@@ -7,12 +7,12 @@ class Public::ClosetsController < ApplicationController
 
   # 自分のみ
   def create
-    closet = current_user.closets.new(closet_params)
+    @closet = current_user.closets.new(closet_params)
     # split(',')=>入力された文字列を,で区切り、配列にする
     tag_list = params[:closet][:tag_name].split(',')
-    if closet.save
-      closet.save_tag(tag_list)
-      redirect_to closet_path(closet.id)
+    if @closet.save
+      @closet.save_tag(tag_list)
+      redirect_to closet_path(@closet.id)
     else
       render "new"
     end

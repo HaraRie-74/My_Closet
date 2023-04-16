@@ -1,80 +1,130 @@
- <div class="wrap">
-      <ul class="nav nav-tabs">
-      <li class="nav-item">
+ <div>
+    <ul class="nav nav-tabs">
+      <li class="nav-item spring">
         <a href="#tab1" class="nav-link active">春</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item summer">
         <a href="#tab2" class="nav-link ">夏</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item autumn">
         <a href="#tab3" class="nav-link ">秋</a></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item winter">
         <a href="#tab4" class="nav-link ">冬</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item other">
         <a href="#tab5" class="nav-link ">その他</a>
       </li>
     </ul>
     <div id="tab-contents">
-      <div id="tab1" class="tab">
+      <div id="tab1" class="tab spring">
         <% spring_all.each do |spring| %>
-          <%= link_to closet_path(spring.id) do %>
-            <%= image_tag spring.images[0].variant(resize_to_limit: [300, 400]).processed %>
-          <% end %>
-          <% spring.tags.each do |tag| %>
-            <%= link_to tag.tag_name, tag_search_path(tag.id) %>
-          <% end %>
-          <%= render 'public/favorites/favorite', obj: spring %>
-          <%= spring.closet_comments.count %>コメント
+          <div class="post">
+            <div class="post-image">
+              <%= link_to closet_path(spring.id) do %>
+                <%= image_tag spring.images[0].variant(resize_to_limit: [300, 400]).processed %>
+              <% end %>
+            </div>
+            <div class="post-tag">
+              <% spring.tags.each do |tag| %>
+                <%= link_to tag.tag_name, tag_search_path(tag.id) %>
+              <% end %>
+            </div>
+            <div class="post-fav">
+              <%= render 'public/favorites/favorite', obj: spring %>
+            </div>
+            <div class="post-comm">
+              <%= spring.closet_comments.count %>コメント
+            </div>
+          </div>
         <% end %>
       </div>
-      <div id="tab2" class="tab">
+      <div id="tab2" class="tab summer">
         <% summer_all.each do |summer| %>
-          <%= link_to closet_path(summer.id) do %>
-            <%= image_tag summer.images[0].variant(resize_to_limit: [300, 400]).processed %>
-          <% end %>
-          <% summer.tags.each do |tag| %>
-            <%= link_to tag.tag_name, tag_search_path(tag.id) %>
-          <% end %>
-          <%= render 'public/favorites/favorite', obj: summer %>
-          <%= summer.closet_comments.count %>コメント
+          <!--<div class="post">-->
+          <!--  <div class="post-image">-->
+              <%= link_to closet_path(summer.id) do %>
+                <%= image_tag summer.images[0].variant(resize_to_limit: [300, 400]).processed %>
+              <% end %>
+            <!--</div>-->
+            <!--<div class="post-tag">-->
+              <% summer.tags.each do |tag| %>
+                <%= link_to tag.tag_name, tag_search_path(tag.id) %>
+              <% end %>
+            <!--</div>-->
+            <!--<div class="post-fav">-->
+              <%= render 'public/favorites/favorite', obj: summer %>
+            <!--</div>-->
+            <!--<div class="post-comm">-->
+              <%= summer.closet_comments.count %>コメント
+          <!--  </div>-->
+          <!--</div>-->
         <% end %>
       </div>
-      <div id="tab3" class="tab">
+      <div id="tab3" class="tab autumn">
         <% autumn_all.each do |autumn| %>
-          <%= link_to closet_path(autumn.id) do %>
-            <%= image_tag autumn.images[0].variant(resize_to_limit: [300, 400]).processed %>
-          <% end %>
-          <% autumn.tags.each do |tag| %>
-            <%= link_to tag.tag_name, tag_search_path(tag.id) %>
-          <% end %>
-          <%= render 'public/favorites/favorite', obj: autumn %>
-          <%= autumn.closet_comments.count %>コメント
+          <!--<div class="post">-->
+          <!--  <div class="post-image">-->
+              <%= link_to closet_path(autumn.id) do %>
+                <%= image_tag autumn.images[0].variant(resize_to_limit: [300, 400]).processed %>
+              <% end %>
+            <!--</div>-->
+            <!--<div class="post-tag">-->
+              <% autumn.tags.each do |tag| %>
+                <%= link_to tag.tag_name, tag_search_path(tag.id) %>
+              <% end %>
+            <!--</div>-->
+            <!--<div class="post-fav">-->
+              <%= render 'public/favorites/favorite', obj: autumn %>
+            <!--</div>-->
+            <!--<div class="post-comm">-->
+              <%= autumn.closet_comments.count %>コメント
+          <!--  </div>-->
+          <!--</div>-->
         <% end %>
       </div>
-      <div id="tab4" class="tab">
+      <div id="tab4" class="tab winter">
         <% winter_all.each do |winter| %>
-          <%= link_to closet_path(winter.id) do %>
-            <%= image_tag winter.images[0].variant(resize_to_limit: [300, 400]).processed %>
-          <% end %>
-          <% winter.tags.each do |tag| %>
-            <%= link_to tag.tag_name, tag_search_path(tag.id) %>
-          <% end %>
-          <%= render 'public/favorites/favorite', obj: winter %>
-          <%= winter.closet_comments.count %>コメント
+          <!--<div class="post">-->
+          <!--  <div class="post-image">-->
+              <%= link_to closet_path(winter.id) do %>
+                <%= image_tag winter.images[0].variant(resize_to_limit: [300, 400]).processed %>
+              <% end %>
+            <!--</div>-->
+            <!--<div class="post-tag">-->
+              <% winter.tags.each do |tag| %>
+                <%= link_to tag.tag_name, tag_search_path(tag.id) %>
+              <% end %>
+            <!--</div>-->
+            <!--<div class="post-fav">-->
+              <%= render 'public/favorites/favorite', obj: winter %>
+            <!--</div>-->
+            <!--<div class="post-comm">-->
+              <%= winter.closet_comments.count %>コメント
+            <!--</div>-->
+          <!--</div>-->
         <% end %>
       </div>
-      <div id="tab5" class="tab">
+      <div id="tab5" class="tab other">
         <% other_all.each do |other| %>
-          <%= link_to closet_path(other.id) do %>
-            <%= image_tag other.images[0].variant(resize_to_limit: [300, 400]).processed %>
-          <% end %>
-          <% other.tags.each do |tag| %>
-            <%= link_to tag.tag_name, tag_search_path(tag.id) %>
-          <% end %>
-          <%= render 'public/favorites/favorite', obj: other %>
-          <%= other.closet_comments.count %>コメント
+          <!--<div class="post">-->
+          <!--  <div class="post-image">-->
+              <%= link_to closet_path(other.id) do %>
+                <%= image_tag other.images[0].variant(resize_to_limit: [300, 400]).processed %>
+              <% end %>
+            <!--</div>-->
+            <!--<div class="post-tag">-->
+              <% other.tags.each do |tag| %>
+                <%= link_to tag.tag_name, tag_search_path(tag.id) %>
+              <% end %>
+            <!--</div>-->
+            <!--<div class="post-fav">-->
+              <%= render 'public/favorites/favorite', obj: other %>
+            <!--</div>-->
+            <!--<div class="post-comm">-->
+              <%= other.closet_comments.count %>コメント
+          <!--  </div>-->
+          <!--</div>-->
         <% end %>
       </div>
     </div>

@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-tabs .nav-item{
+  width: 19%;
+  margin: 1px;
+  padding: .5em 1.5em;
+  border-radius: .5em .5em 0 0;
+}
+
+#tab-contents .{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.spring{
+  background-color: #efd7d3;
+}
+
+.summer{
+  background-color: #e8cdc6;
+}
+
+.autumn{
+  background-color: #ded3c2;
+}
+
+.winter{
+  background-color: #caddde;
+}
+
+.other{
+  background-color:#cbc8c2;
+}
+
+.post{
+  width: 308px;
+  height: 402px;
+  position: relative;
+  background-color: #fffaf0;
+  margin: 3px 3px;
+}
+
+.post-image{
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  margin: 4px;
+}
+
+.post-tag{
+  position: absolute;
+  margin: 310px 20px 0px;
+}
+
+.post-fav{
+  position: absolute;
+  left: 20px;
+  bottom: 5px;
+}
+
+.post-comm{
+  position: absolute;
+  right: 20px;
+  bottom: 5px;
+}

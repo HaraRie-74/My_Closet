@@ -5,6 +5,11 @@
                   aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <% if user_signed_in? %>
+      <strong class="pt-3 offset-1">ようこそ! &nbsp; <%= current_user.name %> &nbsp; さん</strong>
+    <% elsif admin_signed_in? %>
+      <strong class="pt-3 offset-1">管理者でアクセス中</strong>
+    <% end %>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>

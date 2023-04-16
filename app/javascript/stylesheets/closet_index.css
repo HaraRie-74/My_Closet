@@ -9,11 +9,11 @@
 .nav-tabs .nav-item{
   width: 19%;
   margin: 1px;
-  padding: .5em 1.5em;
-  border-radius: .5em .5em 0 0;
+  padding: 0.5em 1.5em;
+  border-radius: 0.5em 0.5em 0 0;
 }
 
-#tab-contents .{
+#tab-contents .tab{
   display: flex;
   flex-wrap: wrap;
 }
@@ -39,33 +39,33 @@
 }
 
 .post{
-  width: 308px;
-  height: 402px;
+  width: 260px;
+  height: 380px;
   position: relative;
   background-color: #fffaf0;
   margin: 3px 3px;
 }
 
 .post-image{
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   position: absolute;
-  margin: 4px;
+  margin: 5px;
 }
 
 .post-tag{
   position: absolute;
-  margin: 310px 20px 0px;
+  margin: 270px 20px 0px;
 }
 
 .post-fav{
   position: absolute;
   left: 20px;
-  bottom: 5px;
+  bottom: 10px;
 }
 
 .post-comm{
   position: absolute;
   right: 20px;
-  bottom: 5px;
+  bottom: 10px;
 }

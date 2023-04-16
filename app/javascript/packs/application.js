@@ -14,7 +14,7 @@ import "swiper.js"
 import "popper.js";
 import "bootstrap"
 import "../stylesheets/application"
-import "../stylesheets/closet_index"
+import "../stylesheets/closet_index.css"
 import '@fortawesome/fontawesome-free/js/all'
 import Swiper from 'swiper/swiper-bundle.js';
 import 'swiper/swiper-bundle.css';

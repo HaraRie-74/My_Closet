@@ -1,11 +1,13 @@
 <div class="container">
+  <div class="row my-5">
+    <h1 class="offset-5">投稿詳細</h1>
+  </div>
   <div class="row">
-    <div class="col-5">
       <div class="swiper">
         <div class="swiper-wrapper">
           <% @closet.images.each do |image| %>
             <div class="swiper-slide">
-              <%= image_tag image.variant(resize_to_limit: [300, 400]).processed %>
+              <%= image_tag image.variant(resize_to_limit: [600, 600]).processed %>
             </div>
           <% end %>
         </div>
@@ -15,9 +17,7 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
       </div>
-    </div>
-    <div class="col-5">
-      <h1>closet_show</h1>
+    <div>
       <%= render 'public/favorites/favorite', obj: @closet %>
       <table class="table">
         <tbody>

@@ -12,11 +12,21 @@ class Public::UsersController < ApplicationController
 
   # 自分
   def closet_index
-    @spring_all = current_user.closets.spring
-    @summer_all = current_user.closets.summer
-    @autumn_all = current_user.closets.autumn
-    @winter_all = current_user.closets.winter
-    @other_all = current_user.closets.other
+    @user = User.find(params[:id])
+    if current_user == @user
+      @spring_all = current_user.closets.spring
+      @summer_all = current_user.closets.summer
+      @autumn_all = current_user.closets.autumn
+      @winter_all = current_user.closets.winter
+      @other_all = current_user.closets.other
+    else
+      # 公開ステータスのみ表示
+      @spring_all = @user.closets.spring.publish
+      @summer_all = @user.closets.summer.publish
+      @autumn_all = @user.closets.autumn.publish
+      @winter_all = @user.closets.winter.publish
+      @other_all = @user.closets.other.publish
+    end
   end
 
  # 自分のみ

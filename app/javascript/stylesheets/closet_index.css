@@ -16,6 +16,7 @@
 #tab-contents .tab{
   display: flex;
   flex-wrap: wrap;
+  padding: 10px;
 }
 
 .spring{
@@ -23,11 +24,11 @@
 }
 
 .summer{
-  background-color: #e8cdc6;
+  background-color: #ffe1b2;
 }
 
 .autumn{
-  background-color: #ded3c2;
+  background-color: #cbafd6;
 }
 
 .winter{
@@ -43,7 +44,7 @@
   height: 380px;
   position: relative;
   background-color: #fffaf0;
-  margin: 3px 3px;
+  margin: 10px 6px;
 }
 
 .post-image{

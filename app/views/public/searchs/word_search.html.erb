@@ -1,22 +1,28 @@
-<% if @model == 'user' %>
-  <h1>【会員の検索結果】検索ワード：<%= @content %></h1>
-  <%= render 'public/searchs/user_search' %>
-  <% if @records.present? %>
-    <%= render 'public/users/user_index', users: @records %>
-  <% else %>
-    <p>データはありません</p>
+<div class="container">
+  <% if @model == 'user' %>
+    <h1 class="mt-5">【会員の検索結果】検索ワード：<%= @content %></h1>
+    <div class="offset-1 mt-3 mb-5">
+      <%= render 'public/searchs/user_search' %>
+    </div>
+    <% if @records.present? %>
+      <%= render 'public/users/user_index', users: @records %>
+    <% else %>
+      <p>データはありません</p>
+    <% end %>
+  <% elsif @model == 'closet' %>
+    <h1 class="mt-5">【Closetの検索結果】検索ワード：<%= @content %></h1>
+    <div class="offset-1 mt-3 mb-5">
+      <%= render 'public/searchs/closet_search' %>
+    </div>
+    <% if @records.present? %>
+      <%= render 'public/users/closet_index',
+        spring_all: @spring_all,
+        summer_all: @summer_all,
+        autumn_all: @autumn_all,
+        winter_all: @winter_all,
+        other_all: @other_all %>
+    <% else %>
+      <p>データはありません</p>
+    <% end %>
   <% end %>
-<% elsif @model == 'closet' %>
-  <h1>【Closetの検索結果】検索ワード：<%= @content %></h1>
-  <%= render 'public/searchs/closet_search' %>
-  <% if @records.present? %>
-    <%= render 'public/users/closet_index',
-      spring_all: @spring_all,
-      summer_all: @summer_all,
-      autumn_all: @autumn_all,
-      winter_all: @winter_all,
-      other_all: @other_all %>
-  <% else %>
-    <p>データはありません</p>
-  <% end %>
-<% end %>
+</div>

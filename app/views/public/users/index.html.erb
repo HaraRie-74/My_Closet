@@ -1,7 +1,10 @@
 <div class="container">
-  <div class="row">
-    <h1>User一覧</h1>
-    <%= render 'public/searchs/user_search' %>
+  <div class="row my-5">
+    <h1 class="offset-4">User一覧</h1>
+    <div class="offset-1 mt-3">
+      <%= render 'public/searchs/user_search' %>
+    </div>
   </div>
   <%= render 'user_index', users: @users %>
+  </div>
 </div>

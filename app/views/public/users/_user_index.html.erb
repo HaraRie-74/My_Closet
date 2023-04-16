@@ -1,21 +1,22 @@
 <div class="row">
-    <table class="table">
-      <thead>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>名前</th>
+        <th>自己紹介</th>
+        <th></th>
+      </tr>
+    </thead>
+    <% users.each do |user| %>
+      <tbody>
         <tr>
-          <th></th>
-          <th>名前</th>
-          <th>自己紹介</th>
+          <td><%= image_tag user.get_profile_image(100,100) %></td>
+          <td><%= link_to user.name, user_path(user.id) %></td>
+          <td><%= user.introduction %></td>
+          <td><%= render 'public/users/follow_button', user: user %></td>
         </tr>
-      </thead>
-      <% users.each do |user| %>
-        <tbody>
-          <tr>
-            <td><%= image_tag user.get_profile_image(100,100) %></td>
-            <td><%= link_to user.name, user_path(user.id) %></td>
-            <td><%= user.introduction %></td>
-            <td><%= render 'follow_button', user: user %></td>
-          </tr>
-        </tbody>
-      <% end %>
-      </table>
-  </div>
+      </tbody>
+    <% end %>
+  </table>
+</div>

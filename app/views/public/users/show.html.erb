@@ -35,7 +35,7 @@
           </tr>
           <tr>
             <td colspan="2">
-              <% if @user.name != "guestuser" %>
+              <% if @user.name != "guestuser" && @user == current_user %>
                 <%= link_to "会員情報編集", edit_user_path(@user.id), class:"btn btn-secondary" %>
                 <%= link_to "退会する", quit_check_user_path(@user.id), class:"btn btn-danger" %>
               <% end %>

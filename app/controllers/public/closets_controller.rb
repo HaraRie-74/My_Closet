@@ -1,4 +1,8 @@
 class Public::ClosetsController < ApplicationController
+  # ログイン済みでないとアクセスできない(deviseのメソッド)
+  before_action :authenticate_user!
+  # 他ユーザーに対するアクセス制限
+  before_action :is_matching_login_user, only:[:edit, :update, :destroy]
 
   # 自分のみ
   def new
@@ -72,10 +76,19 @@ class Public::ClosetsController < ApplicationController
     end
   end
 
+
   private
 
   def closet_params
     params.require(:closet).permit(:purchase_date, :purchase_store, :purchase_price, :season, :memo, :is_published_flag, images:[])
+  end
+
+  def is_matching_login_user
+    closet = Closet.find(params[:id])
+    unless closet.user_id == current_user.id
+      flash[:notice] = "アクセスできません"
+      redirect_to user_path(current_user.id)
+    end
   end
 
 end

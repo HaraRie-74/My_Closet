@@ -1,9 +1,9 @@
 <% if obj.favorited_by?(current_user) %>
-  <%= link_to closet_favorites_path(obj.id), method: :delete do %>
+  <%= link_to closet_favorites_path(obj.id), method: :delete, remote:true do %>
     <i class="fas fa-heart", style="color:ff0000"></i> <%= obj.favorites.count %> &thinsp; いいね
   <% end %>
 <% else %>
-  <%= link_to closet_favorites_path(obj.id), method: :post do %>
+  <%= link_to closet_favorites_path(obj.id), method: :post, remote:true do %>
     <i class="far fa-heart"></i><%= obj.favorites.count %> &thinsp; いいね
   <% end %>
 <% end %>

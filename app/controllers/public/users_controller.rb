@@ -1,4 +1,10 @@
 class Public::UsersController < ApplicationController
+  # ログイン済みでないとアクセスできない(deviseのメソッド)
+  before_action :authenticate_user!
+  # 他ユーザーに対するアクセス制限
+  before_action :is_matching_login_user, only:[:edit, :update, :quit_check, :quit]
+  # ゲストユーザーは会員編集させない
+  before_action :ensure_guest_user, only:[:edit, :update, :quit_check, :quit]
   # 自分・他人
 
   def show
@@ -86,6 +92,22 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
+  end
+
+  def is_matching_login_user
+    @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      flash[:notice] = "アクセスできません"
+      redirect_to user_path(current_user.id)
+    end
+  end
+
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "guestuser"
+      flash[:notice] = "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      redirect_to user_path(current_user)
+    end
   end
 
 end

@@ -1,4 +1,6 @@
 class Public::ClosetCommentsController < ApplicationController
+  # ログイン済みでないとアクセスできない(deviseのメソッド)
+  before_action :authenticate_user!
 
   def create
     closet = Closet.find(params[:closet_id])

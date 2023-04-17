@@ -1,4 +1,6 @@
 class Admin::ClosetsController < ApplicationController
+  # ログイン済みでないとアクセスできない(deviseのメソッド)
+  before_action :authenticate_admin!
 
   # 管理者は非公開投稿を見ることができる
   def index

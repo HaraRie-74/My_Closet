@@ -1,6 +1,6 @@
-class Public::SearchsController < ApplicationController
-  # ログイン済みでないとアクセスできない(deviseのメソッド)
-  before_action :authenticate_user!
+class Admin::SearchsController < ApplicationController
+   # ログイン済みでないとアクセスできない(deviseのメソッド)
+  before_action :authenticate_admin!
 
   def word_search
     @model = params[:model]

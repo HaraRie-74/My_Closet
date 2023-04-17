@@ -1,16 +1,21 @@
+<div class="container">
 <% if @model == 'user' %>
-  <h1>【会員の検索結果】検索ワード：<%= @content %></h1>
-  <%= render 'public/searchs/user_search' %>
+  <h1 class="mt-5">【会員の検索結果】検索ワード：<%= @content %></h1>
+  <div class="offset-1 mt-3 mb-5">
+    <%= render 'admin/searchs/user_search' %>
+  </div>
   <% if @records.present? %>
-    <%= render 'public/users/user_index', users: @records %>
+    <%= render 'admin/users/user_index', users: @records %>
   <% else %>
     <p>データはありません</p>
   <% end %>
 <% elsif @model == 'closet' %>
-  <h1>【Closetの検索結果】検索ワード：<%= @content %></h1>
-  <%= render 'public/searchs/closet_search' %>
+  <h1 class="mt-5">【Closetの検索結果】検索ワード：<%= @content %></h1>
+  <div class="offset-1 mt-3 mb-5">
+    <%= render 'admin/searchs/closet_search' %>
+  </div>
   <% if @records.present? %>
-    <%= render 'public/users/closet_index',
+    <%= render 'admin/closets/closet_index',
       spring_all: @spring_all,
       summer_all: @summer_all,
       autumn_all: @autumn_all,
@@ -20,3 +25,4 @@
     <p>データはありません</p>
   <% end %>
 <% end %>
+</div>

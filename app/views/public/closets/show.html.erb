@@ -19,7 +19,9 @@
         <div class="swiper-button-next"></div>
       </div>
     <div>
-      <%= render 'public/favorites/favorite', obj: @closet %>
+      <div id="favorite_btn_<%= @closet.id %>">
+        <%= render 'public/favorites/favorite', obj: @closet %>
+      </div>
       <table class="table">
         <tbody>
           <tr>

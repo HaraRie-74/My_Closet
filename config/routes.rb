@@ -46,6 +46,12 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
 
+    get '/word_search' => 'searchs#word_search'
+    get '/tag_name_search' => 'searchs#tag_name_search'
+    resources :tags do
+      get '/search' => 'searchs#tag_search'
+    end
+
     resources :closets, only:[:index, :show] do
       resources :closet_comments, only:[:destroy]
     # patch 'closet_comments/:id' => 'closet_comments#update', as:'admin_comment'

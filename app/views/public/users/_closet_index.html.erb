@@ -30,7 +30,7 @@
               <%= link_to tag.tag_name, tag_search_path(tag.id) %>
             <% end %>
           </div>
-          <div class="post-fav">
+          <div class="post-fav" id="favorite_btn_<%= spring.id %>">
             <%= render 'public/favorites/favorite', obj: spring %>
           </div>
           <div class="post-comm">
@@ -52,7 +52,7 @@
               <%= link_to tag.tag_name, tag_search_path(tag.id) %>
             <% end %>
           </div>
-          <div class="post-fav">
+          <div class="post-fav" id="favorite_btn_<%= summer.id %>">
             <%= render 'public/favorites/favorite', obj: summer %>
           </div>
           <div class="post-comm">
@@ -74,7 +74,7 @@
               <%= link_to tag.tag_name, tag_search_path(tag.id) %>
             <% end %>
           </div>
-          <div class="post-fav">
+          <div class="post-fav" id="favorite_btn_<%= autumn.id %>">
             <%= render 'public/favorites/favorite', obj: autumn %>
           </div>
           <div class="post-comm">
@@ -96,7 +96,7 @@
               <%= link_to tag.tag_name, tag_search_path(tag.id) %>
             <% end %>
           </div>
-          <div class="post-fav">
+          <div class="post-fav" id="favorite_btn_<%= winter.id %>">
             <%= render 'public/favorites/favorite', obj: winter %>
           </div>
           <div class="post-comm">
@@ -118,7 +118,7 @@
               <%= link_to tag.tag_name, tag_search_path(tag.id) %>
             <% end %>
           </div>
-          <div class="post-fav">
+          <div class="post-fav" id="favorite_btn_<%= other.id %>">
             <%= render 'public/favorites/favorite', obj: other %>
           </div>
           <div class="post-comm">

@@ -12,6 +12,7 @@ class Public::ClosetsController < ApplicationController
     tag_list = params[:closet][:tag_name].split(',')
     if @closet.save
       @closet.save_tag(tag_list)
+      flash[:notice]="投稿に成功しました"
       redirect_to closet_path(@closet.id)
     else
       render "new"
@@ -49,6 +50,7 @@ class Public::ClosetsController < ApplicationController
     tag_list = params[:closet][:tag_name].split(',')
     if closet.update(closet_params)
       closet.save_tag(tag_list)
+      flash[:notice]="投稿内容を変更しました"
       redirect_to closet_path(closet.id)
     else
       render 'edit'
@@ -63,6 +65,7 @@ class Public::ClosetsController < ApplicationController
       @autumn_all = Closet.autumn
       @winter_all = Closet.winter
       @other_all = Closet.other
+      flash[:notice]="投稿を削除しました"
       redirect_to closet_index_path(current_user.id)
     else
       render 'show'

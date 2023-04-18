@@ -1,8 +1,16 @@
 <div class="container">
   <div class="row">
-    <h1>退会確認</h1>
-    <p>本当に退会しますか？</p>
-    <%= link_to "退会しない", user_path(@user.id) %>
-    <%= link_to "退会する", quit_user_path(@user.id), method: :patch %>
+    <div class="col-12 justify-content-censter text-center">
+      <div class="my-5">
+        <h1><strong>退会確認</strong></h1>
+      </div>
+      <div class="mb-3">
+        <h5>本当に退会しますか？</h5>
+      </div>
+      <div>
+      <%= link_to "退会しない", user_path(@user.id) %> &emsp;
+      <%= link_to "退会する", quit_user_path(@user.id), method: :patch %>
+      </div>
+    </div>
   </div>
 </div>

@@ -53,7 +53,7 @@ Rails.application.routes.draw do
     end
 
     resources :closets, only:[:index, :show] do
-      resources :closet_comments, only:[:destroy]
+      resources :closet_comments, only:[:update]
     # patch 'closet_comments/:id' => 'closet_comments#update', as:'admin_comment'
     end
     resources :users, only:[:index, :show] do

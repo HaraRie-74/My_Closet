@@ -1,8 +1,4 @@
 <h1>コメント（<%= closet.closet_comments.count %>件）</h1>
-<%= form_with model: [closet, comment], url:closet_closet_comments_path(closet.id), method: :post, local: false do |f| %>
-  <%= f.text_area :comment, size: "40x4", placeholder: "コメントをここに" %>
-  <%= f.submit "コメント投稿" %>
-<% end %>
 <table class="table mt-3">
   <tbody>
     <% closet.closet_comments.each do |comment| %>
@@ -12,8 +8,9 @@
           <%= comment.comment %>
         </td>
         <td style="width:20%">
-          <% if comment.user == current_user && comment.comment != "管理者によって削除されました" %>
-            <%= link_to "削除", closet_closet_comment_path(closet.id, comment.id), method: :delete, remote: true %>
+          <% if comment.comment != "管理者によって削除されました" %>
+            <%= link_to "削除", admin_closet_closet_comment_path(closet.id, comment.id), method: :patch,
+            remote: true, "data-confirm" => "本当に削除して宜しいですか？" %>
           <% end %>
         </td>
       </tr>

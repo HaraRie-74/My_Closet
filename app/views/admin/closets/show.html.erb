@@ -1,25 +1,27 @@
 <div class="container">
-  <div class="row">
-    <div class="col-5">
-      <div class="swiper">
-        <div class="swiper-wrapper">
-          <% @closet.images.each do |image| %>
-            <div class="swiper-slide">
-              <%= image_tag image.variant(resize_to_limit: [300, 400]).processed %>
-            </div>
-          <% end %>
-        </div>
-        <!--ページネーションの要素-->
-        <div class="swiper-pagination"></div>
-        <!--ナビゲーションボタン （前、次）-->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
+  <div class="row my-5">
+    <div class="col-12 text-center">
+      <h1><strong>投稿詳細</strong></h1>
     </div>
-    <div class="col-5">
-      <h1>closet_show</h1>
+  </div>
+  <div class="row">
+    <div class="swiper mb-5">
+      <div class="swiper-wrapper">
+        <% @closet.images.each do |image| %>
+          <div class="swiper-slide">
+            <%= image_tag image.variant(resize_to_limit: [600, 600]).processed %>
+          </div>
+        <% end %>
+      </div>
+      <!--ページネーションの要素-->
+      <div class="swiper-pagination"></div>
+      <!--ナビゲーションボタン （前、次）-->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    <div class="closest_show offset-1 col-lg-6">
       <i class="far fa-heart"></i><%= @closet.favorites.count %> &thinsp; いいね
-      <table class="table">
+      <table class="table mb-5">
         <tbody>
           <tr>
             <td>投稿者</td>
@@ -72,14 +74,15 @@
           </tr>
         </tbody>
       </table>
-      <div class="comment">
-        <h1>コメント（<%= @closet.closet_comments.count %>件）</h1>
-        <% @closet.closet_comments.each do |comment| %>
-          <%= comment.user.name %> &emsp; <%= comment.created_at.strftime('%Y/%m/%d') %></br >
-          <%= comment.comment %>
-          <%= link_to "コメント削除", admin_closet_closet_comment_path(@closet.id, comment.id), class:"bnt btn-danger", method: :delete %></br >
-        <% end %>
+      <div id="closet_comment_<%= @closet.id %>">
+        <%= render 'admin/closet_comments/comments', closet: @closet %>
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+

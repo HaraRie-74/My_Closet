@@ -1,7 +1,9 @@
 <%= flash[:notice] %>
 <div class="container">
   <div class="row my-5">
-    <h1 class="offset-5"><strong>投稿詳細</strong></h1>
+    <div class="col-12 text-center">
+      <h1><strong>投稿詳細</strong></h1>
+    </div>
   </div>
   <div class="row">
     <div class="swiper mb-5">
@@ -76,6 +78,7 @@
         </tbody>
       </table>
       <div id="closet_comment_<%= @closet.id %>">
+        <%= render 'public/closets/error', obj: @comment %>
         <%= render 'public/closet_comments/comments', closet: @closet, comment: @comment %>
       </div>
     </div>

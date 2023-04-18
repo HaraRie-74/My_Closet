@@ -1,0 +1,20 @@
+<h1>コメント（<%= closet.closet_comments.count %>件）</h1>
+<%= form_with model: [closet, comment], url:closet_closet_comments_path(closet.id), method: :post, local: false do |f| %>
+  <%= f.text_area :comment, size: "40x4", placeholder: "コメントをここに" %>
+  <%= f.submit "コメント投稿" %>
+<% end %>
+<table class="table mt-3">
+  <tbody>
+    <% closet.closet_comments.each do |comment| %>
+      <tr style="width:100%">
+        <td style="word-break:break-word">
+          <strong><%= comment.user.name %></strong> &emsp; <%= comment.created_at.strftime('%Y/%m/%d') %></br >
+          <%= comment.comment %>
+        </td>
+        <td style="width:20%">
+          <%= link_to "削除", closet_closet_comment_path(closet.id, comment.id), method: :delete, remote: true %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

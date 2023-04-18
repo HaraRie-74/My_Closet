@@ -14,7 +14,7 @@
           <td><%= image_tag user.get_profile_image(100,100) %></td>
           <td><%= link_to user.name, user_path(user.id) %></td>
           <td><%= user.introduction %></td>
-          <td><%= render 'public/users/follow_button', user: user %></td>
+          <td id="follow_button_<%= user.id %>"><%= render 'public/users/follow_button', user: user %></td>
         </tr>
       </tbody>
     <% end %>

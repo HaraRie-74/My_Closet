@@ -6,7 +6,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <% if user_signed_in? %>
-      <strong class="pt-3 offset-1">ようこそ! &nbsp; <%= current_user.name %> &nbsp; さん</strong>
+      <strong class="pt-3 offset-1">ようこそ!</br><%= current_user.name %> &nbsp; さん</strong>
     <% elsif admin_signed_in? %>
       <strong class="pt-3 offset-1">管理者でアクセス中</strong>
     <% end %>

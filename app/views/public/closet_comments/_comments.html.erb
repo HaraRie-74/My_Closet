@@ -1,6 +1,7 @@
 <h1>コメント（<%= closet.closet_comments.count %>件）</h1>
+<%= render 'public/closets/error', obj: comment %>
 <%= form_with model: [closet, comment], url:closet_closet_comments_path(closet.id), method: :post, local: false do |f| %>
-  <%= f.text_area :comment, size: "40x4", placeholder: "コメントをここに" %>
+  <%= f.text_area :comment, size: "40x4", placeholder: "コメントをここに（１００文字まで）" %>
   <%= f.submit "コメント投稿" %>
 <% end %>
 <table class="table mt-3">

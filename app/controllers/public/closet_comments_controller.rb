@@ -6,11 +6,13 @@ class Public::ClosetCommentsController < ApplicationController
     @closet = Closet.find(params[:closet_id])
     comment = current_user.closet_comments.new(closet_comment_params)
     comment.closet_id = @closet.id
-    @comment = ClosetComment.new
-    unless comment.save
+    if !comment.save
       @closet_tags = @closet.tags
+      @comment = comment
       # render "public/closets/show"
-      render template:"public/homes/top"
+      # render "public/homes/top"
+    else
+      @comment = ClosetComment.new
     end
   end
 

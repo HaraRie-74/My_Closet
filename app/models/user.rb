@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   validates :name, length: { minimum: 2, maximum: 20 }
-  validates :introduction,length: {maximum:100}
+  validates :introduction, length: {maximum:100}
 
   has_one_attached :profile_image
 

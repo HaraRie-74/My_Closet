@@ -3,8 +3,8 @@
     <thead>
       <tr>
         <th></th>
-        <th>名前</th>
-        <th>自己紹介</th>
+        <th width="200">名前</th>
+        <th width="300">自己紹介</th>
         <th></th>
       </tr>
     </thead>
@@ -13,7 +13,7 @@
         <tr>
           <td><%= image_tag user.get_profile_image(100,100) %></td>
           <td><%= link_to user.name, user_path(user.id) %></td>
-          <td><%= user.introduction %></td>
+          <td style="word-break:break-word"><%= user.introduction %></td>
           <td id="follow_button_<%= user.id %>"><%= render 'public/users/follow_button', user: user %></td>
         </tr>
       </tbody>

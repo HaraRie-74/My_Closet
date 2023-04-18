@@ -10,7 +10,7 @@
       <div class="swiper-wrapper">
         <% @closet.images.each do |image| %>
           <div class="swiper-slide">
-            <%= image_tag image.variant(resize_to_limit: [600, 600]).processed %>
+            <%= image_tag image.variant(resize_to_limit: [350, 500]).processed %>
           </div>
         <% end %>
       </div>
@@ -27,8 +27,8 @@
       <table class="table mb-5">
         <tbody>
           <tr>
-            <td>投稿者</td>
-            <td><%= link_to @closet.user.name,  user_path(@closet.user.id) %></td>
+            <td width="30%">投稿者</td>
+            <td width="70%"><%= link_to @closet.user.name,  user_path(@closet.user.id) %></td>
           </tr>
           <tr>
             <td>購入日</td>
@@ -36,7 +36,7 @@
           </tr>
           <tr>
             <td>購入店舗</td>
-            <td><%= @closet.purchase_store %></td>
+            <td style="word-break:break-word"><%= @closet.purchase_store %></td>
           </tr>
           <tr>
             <td>値段</td>

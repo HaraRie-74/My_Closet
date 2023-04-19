@@ -1,15 +1,52 @@
 <div class="container">
-  <div class="row my-5">
-    <h1 class="offset-4">My Closetについて</h1>
-  </div>
-  <div>
-    <p></p>
+  <div class="row mt-5">
+    <div class="col-12 text-center">
+      <h1 class="mb-5"><strong>My Closetについて</strong></h1>
+    <div class="row">
+      <p><strong>My Closet</strong>は、購入した服を管理・投稿することができるアプリケーションです。</p>
+    </div>
+    <div class="row">
+      <div class="example-1" style="position: relative; height:300px; width: 300px; background-color: #F8FFC4;">
+        <div style="position: absolute; bottom:20px;">
+          <%= image_tag 'example-1.png', size:"200x200" %>
+        </div>
+        <div class="text">
+          <h5>どこでもクローゼットを確認！</h5>
+          <p>新しい服を購入時、「似たような服が家にある気がする・・」と悩んでしまうことはありますか？
+            <strong>My Closet</strong>で管理しておけば、外出中でも写真付きで確認することが可能です。</p>
+        </div>
+      </div>
+      <div class="example-2" style="position: relative; height:300px; width: 300px; background-color: #FFEAF4;">
+        <div style="position: absolute; bottom:20px;">
+          <%= image_tag 'example-2.png', size:"200x200" %>
+        </div>
+        <div class="text">
+          <h5>季節ごとに服を管理！</h5>
+          <p>所持している服が多いと、服を管理するのは簡単ではありません。去年どんな服を着ていたか忘れてしまうこともあると思います。
+            <strong>My Closet</strong>は季節ごとに管理できるので、昨シーズン新しい服を購入時、「似たような服が家にある気がする・・」と悩んでしまうことがあると思います。
+            <strong>My Closet</strong>で管理しておけば、いつでもどこでも写真付きで確認することが可能です。</p>
+        </div>
+      </div>
+      <div class="example-3" style="position: relative; height:300px; width: 300px; background-color: #E5E5FF;">
+        <div style="position: absolute; bottom:20px;">
+          <%= image_tag 'example-3.png', size:"170x200" %>
+        </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
 
 
 
 <div class="row">
   <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
 </div>
+
+
+<!--<div id="about_bg" class="col-12", style="position: relative;">-->
+<!--        <%= image_tag 'about_bg.jpg', class:"col-12" %>-->
+<!--          <p style="position: absolute; top: 20px; left: 40px;">-->
+<!--            <strong>My Closet</strong>は、購入した服を管理することができるアプリケーションです。-->
+<!--          </p>-->
+<!--      </div>-->

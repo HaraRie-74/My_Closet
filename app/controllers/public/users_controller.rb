@@ -13,7 +13,7 @@ class Public::UsersController < ApplicationController
 
   # 他人
   def index
-    @users = User.all
+    @users = User.where(is_deleted: false)
   end
 
   # 自分
@@ -81,8 +81,6 @@ class Public::UsersController < ApplicationController
   def quit
     user = User.find(params[:id])
     user.update(is_deleted: true)
-    # 全てのsessionを破棄
-    reset_session
     flash[:notice] = "退会処理が完了しました。ご利用ありがとうございました。"
     redirect_to root_path
   end

@@ -49,7 +49,7 @@ class Public::SearchsController < ApplicationController
 
   def search_for(model, content)
     if model == 'user'
-      User.where('name LIKE ?', '%'+content+'%')
+      User.where('name LIKE ?', '%'+content+'%').where(is_deleted: false)
     elsif model == 'closet'
       Closet.where('purchase_store LIKE ?', '%'+content+'%')
     end

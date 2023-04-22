@@ -1,20 +1,34 @@
 <div class="row">
-    <table class="table">
-      <thead>
+  <table class="table">
+    <thead>
+      <tr>
+        <th width="20%"></th>
+        <th width="20%">名前</th>
+        <th width="40%">自己紹介</th>
+        <th width="20%" class="text-center">会員ステータス</th>
+      </tr>
+    </thead>
+    <% users.each do |user| %>
+      <tbody>
         <tr>
-          <th></th>
-          <th>名前</th>
-          <th>自己紹介</th>
+          <td><%= image_tag user.get_profile_image(100,100) %></td>
+          <td>
+            <% if user.is_deleted == true %>
+              <%= user.name %>
+            <% else %>
+              <%= link_to user.name, admin_user_path(user.id) %>
+            <% end %>
+          </td>
+          <td><%= user.introduction %></td>
+          <td style="text-align:center; vertical-align:middle;">
+            <% if user.is_deleted == true %>
+              退会済み
+            <% else %>
+              〇
+            <% end %>
+          </td>
         </tr>
-      </thead>
-      <% users.each do |user| %>
-        <tbody>
-          <tr>
-            <td><%= image_tag user.get_profile_image(100,100) %></td>
-            <td><%= link_to user.name, admin_user_path(user.id) %></td>
-            <td><%= user.introduction %></td>
-          </tr>
-        </tbody>
-      <% end %>
-      </table>
-  </div>
+      </tbody>
+    <% end %>
+  </table>
+</div>

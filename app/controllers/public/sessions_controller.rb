@@ -34,7 +34,7 @@ class Public::SessionsController < Devise::SessionsController
     # アカウントを取得できなかった場合、このメソッドを終了する
     return if !@user
     if @user.valid_password?(params[:user][:password]) && @user.is_deleted == true
-      flash[:notice]="退会済みの為、再登録が必要です。"
+      flash[:notice]="退会済みの為、再度会員登録してください。"
       redirect_to  new_user_registration_path
     end
   end

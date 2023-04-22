@@ -58,7 +58,8 @@ Rails.application.routes.draw do
     end
     resources :users, only:[:index, :show] do
       member do
-        get :closet_index, :following, :follows, :favorite
+        get :closet_index, :following, :follows, :favorite, :quit_check
+        patch :quit
       end
     end
   end

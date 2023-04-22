@@ -1,5 +1,7 @@
 <div class="container">
-  <h1>いいね一覧</h1>
+  <div class="row my-5">
+    <h1 class="offset-4"><%= @user.name %>のいいね一覧</h1>
+  </div>
   <%= render 'admin/closets/closet_index',
    spring_all: @spring_all,
    summer_all: @summer_all,

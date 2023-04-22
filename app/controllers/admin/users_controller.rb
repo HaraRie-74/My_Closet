@@ -8,11 +8,12 @@ class Admin::UsersController < ApplicationController
   end
 
   def closet_index
-    @spring_all = User.find(params[:id]).closets.spring
-    @summer_all = User.find(params[:id]).closets.summer
-    @autumn_all = User.find(params[:id]).closets.autumn
-    @winter_all = User.find(params[:id]).closets.winter
-    @other_all = User.find(params[:id]).closets.other
+    @user = User.find(params[:id])
+    @spring_all = @user.closets.spring
+    @summer_all = @user.closets.summer
+    @autumn_all = @user.closets.autumn
+    @winter_all = @user.closets.winter
+    @other_all = @user.closets.other
   end
 
   def following
@@ -26,11 +27,37 @@ class Admin::UsersController < ApplicationController
   end
 
   def favorite
-    closets = User.find(params[:id]).favorited_closets
+    @user = User.find(params[:id])
+    closets = @user.favorited_closets
     @spring_all = closets.spring
     @summer_all = closets.summer
     @autumn_all = closets.autumn
     @winter_all = closets.winter
     @other_all = closets.other
   end
+
+  def quit_check
+    @user = User.find(params[:id])
+  end
+
+  # def quit
+  #   user = User.find(params[:id])
+  #   user.update(is_deleted: true)
+  #   user.closets.destroy_all
+  #   flash[:notice] = "退会させました"
+  #   redirect_to admin_users_path
+  # end
+
+  def quit
+    user = User.find(params[:id])
+    user.update(is_deleted: true)
+    user.closets.destroy_all
+    user.closet_comments.destroy_all
+    user.favorites.destroy_all
+    user.active_relationships.destroy_all
+    user.passive_relationships.destroy_all
+    flash[:notice] = "退会させました"
+    redirect_to admin_users_path
+  end
+
 end

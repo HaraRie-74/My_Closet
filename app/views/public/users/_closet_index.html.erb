@@ -27,7 +27,9 @@
           </div>
           <div class="post-tag">
             <% spring.tags.each do |tag| %>
-              <%= link_to tag.tag_name, tag_search_path(tag.id) %>
+              <%= link_to tag_search_path(tag.id) do %>
+                <i class="fas fa-tag"></i><%= tag.tag_name %>
+              <% end %>&ensp;
             <% end %>
           </div>
           <div class="post-fav" id="favorite_btn_<%= spring.id %>">
@@ -49,7 +51,9 @@
           </div>
           <div class="post-tag">
             <% summer.tags.each do |tag| %>
-              <%= link_to tag.tag_name, tag_search_path(tag.id) %>
+              <%= link_to tag_search_path(tag.id) do %>
+                <i class="fas fa-tag"></i><%= tag.tag_name %>
+              <% end %>&ensp;
             <% end %>
           </div>
           <div class="post-fav" id="favorite_btn_<%= summer.id %>">
@@ -71,7 +75,9 @@
           </div>
           <div class="post-tag">
             <% autumn.tags.each do |tag| %>
-              <%= link_to tag.tag_name, tag_search_path(tag.id) %>
+              <%= link_to tag_search_path(tag.id) do %>
+                <i class="fas fa-tag"></i><%= tag.tag_name %>
+              <% end %>&ensp;
             <% end %>
           </div>
           <div class="post-fav" id="favorite_btn_<%= autumn.id %>">
@@ -93,7 +99,9 @@
           </div>
           <div class="post-tag">
             <% winter.tags.each do |tag| %>
-              <%= link_to tag.tag_name, tag_search_path(tag.id) %>
+              <%= link_to tag_search_path(tag.id) do %>
+                <i class="fas fa-tag"></i><%= tag.tag_name %>
+              <% end %>&ensp;
             <% end %>
           </div>
           <div class="post-fav" id="favorite_btn_<%= winter.id %>">
@@ -115,7 +123,9 @@
           </div>
           <div class="post-tag">
             <% other.tags.each do |tag| %>
-              <%= link_to tag.tag_name, tag_search_path(tag.id) %>
+              <%= link_to tag_search_path(tag.id) do %>
+                <i class="fas fa-tag"></i><%= tag.tag_name %>
+              <% end %>&ensp;
             <% end %>
           </div>
           <div class="post-fav" id="favorite_btn_<%= other.id %>">

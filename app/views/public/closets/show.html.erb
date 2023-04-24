@@ -51,7 +51,7 @@
             <td>タグ</td>
             <td>
               <% @closet_tags.each do |closet_tag| %>
-                <%= closet_tag.tag_name %>
+                <i class="fas fa-tag"></i><%= closet_tag.tag_name %>&ensp;
               <% end %>
             </td>
           </tr>

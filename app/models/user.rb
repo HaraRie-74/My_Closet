@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   validates :name, length: { minimum: 2, maximum: 20 }
   validates :introduction, length: {maximum:100}
 
@@ -28,7 +28,7 @@ class User < ApplicationRecord
   def get_profile_image(width,height)
     unless profile_image.attached?
       file_path=Rails.root.join('app/assets/images/no_image.jpg')
-      profile_image.attach(io:File.open(file_path),filename:'default-image.jpg',content_type:'image/jpeg')
+      profile_image.attach(io:File.open(file_path),filename:'default-image.jpg',content_type:'image/jpeg', size: 200*200)
     end
     profile_image.variant(resize_to_limit:[width,height]).processed
   end
@@ -47,7 +47,7 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
-  
+
   # ゲストユーザー
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|

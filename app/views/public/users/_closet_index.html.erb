@@ -1,19 +1,19 @@
 <div>
-  <ul class="nav nav-tabs">
+  <ul id="tab-menu" class="nav nav-tabs">
     <li class="nav-item spring">
-      <a href="#tab1" class="nav-link active">春</a>
+      <a href="#tab1" class="nav-link active">春（<%= spring_all.count %>）</a>
     </li>
     <li class="nav-item summer">
-      <a href="#tab2" class="nav-link ">夏</a>
+      <a href="#tab2" class="nav-link ">夏（<%= summer_all.count %>）</a>
     </li>
     <li class="nav-item autumn">
-      <a href="#tab3" class="nav-link ">秋</a></a>
+      <a href="#tab3" class="nav-link ">秋（<%= autumn_all.count %>）</a></a>
     </li>
     <li class="nav-item winter">
-      <a href="#tab4" class="nav-link ">冬</a>
+      <a href="#tab4" class="nav-link ">冬（<%= winter_all.count %>）</a>
     </li>
     <li class="nav-item other">
-      <a href="#tab5" class="nav-link ">その他</a>
+      <a href="#tab5" class="nav-link ">その他（<%= other_all.count %>）</a>
     </li>
   </ul>
   <div id="tab-contents">

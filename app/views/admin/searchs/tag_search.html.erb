@@ -1,11 +1,16 @@
-<h1>「<%= @tag.tag_name %>」タグの投稿一覧</h1>
-<%= form_with url:tag_search_path(tag.id), method: :get do |f| %>
-  <%= f.text_field :content %>
-  <%= f.submit "検索" %>
-<% end %>
-<%= render 'public/users/closet_index',
-  spring_all: @spring_all,
-  summer_all: @summer_all,
-  autumn_all: @autumn_all,
-  winter_all: @winter_all,
-  other_all: @other_all %>
+<div class="container">
+  <div class="row mt-5">
+    <h1>「<%= @tag.tag_name %>」タグの検索</h1>
+  </div>
+  <div class="offset-1 mt-3 mb-5">
+    <%= form_with url:admin_tag_name_search_path(tag.id), method: :get do |f| %>
+      <%= f.text_field :content, placeholder: "タグ名で検索" %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+  <%= render 'admin/closets/closet_index',
+    spring_all: @spring_all,
+    summer_all: @summer_all,
+    autumn_all: @autumn_all,
+    winter_all: @winter_all,
+    other_all: @other_all %>

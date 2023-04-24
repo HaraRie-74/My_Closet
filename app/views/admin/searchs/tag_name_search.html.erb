@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row mt-5">
+    <h1>「<%= @tag_word %>」タグの検索</h1>
+  </div>
+  <div class="offset-1 mt-3 mb-5">
+    <%= form_with url:admin_tag_name_search_path, method: :get do |f| %>
+      <%= f.text_field :tag_word, placeholder: "タグ名で検索" %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+  <% if @tag.present? %>
+    <%= render 'admin/closets/closet_index',
+      spring_all: @spring_all,
+      summer_all: @summer_all,
+      autumn_all: @autumn_all,
+      winter_all: @winter_all,
+      other_all: @other_all %>
+  <% else %>
+    <p>データはありません</p>
+  <% end %>
+</div>

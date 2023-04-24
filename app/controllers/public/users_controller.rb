@@ -52,7 +52,8 @@ class Public::UsersController < ApplicationController
   end
 
   def favorite
-    closets = current_user.favorited_closets
+    @user = User.find(params[:id])
+    closets = @user.favorited_closets
     @spring_all = closets.spring
     @summer_all = closets.summer
     @autumn_all = closets.autumn
@@ -78,10 +79,22 @@ class Public::UsersController < ApplicationController
   end
 
   # 自分のみ
+  # def quit
+  #   user = User.find(params[:id])
+  #   user.update(is_deleted: true)
+  #   flash[:notice] = "退会処理が完了しました。ご利用ありがとうございました。"
+  #   redirect_to root_path
+  # end
+
   def quit
     user = User.find(params[:id])
     user.update(is_deleted: true)
-    flash[:notice] = "退会処理が完了しました。ご利用ありがとうございました。"
+    user.closets.destroy_all
+    user.closet_comments.destroy_all
+    user.favorites.destroy_all
+    user.active_relationships.destroy_all
+    user.passive_relationships.destroy_all
+    flash[:notice] = "退会処理が完了しました。ご利用ありがとうございました"
     redirect_to root_path
   end
 

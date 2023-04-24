@@ -10,11 +10,11 @@ class Admin::SearchsController < ApplicationController
     else
       @records = search_for(@model, @content)
       if @model == 'closet'
-        @spring_all = @records.spring.publish
-        @summer_all = @records.summer.publish
-        @autumn_all = @records.autumn.publish
-        @winter_all = @records.winter.publish
-        @other_all = @records.other.publish
+        @spring_all = @records.spring
+        @summer_all = @records.summer
+        @autumn_all = @records.autumn
+        @winter_all = @records.winter
+        @other_all = @records.other
       end
     end
   end
@@ -22,11 +22,11 @@ class Admin::SearchsController < ApplicationController
   def tag_search
     @tag = Tag.find(params[:tag_id])
     @closets = @tag.closets.all
-    @spring_all = @closets.spring.publish
-    @summer_all = @closets.summer.publish
-    @autumn_all = @closets.autumn.publish
-    @winter_all = @closets.winter.publish
-    @other_all = @closets.other.publish
+    @spring_all = @closets.spring
+    @summer_all = @closets.summer
+    @autumn_all = @closets.autumn
+    @winter_all = @closets.winter
+    @other_all = @closets.other
   end
 
   def tag_name_search
@@ -36,11 +36,11 @@ class Admin::SearchsController < ApplicationController
       @records = []
     else
       closets = @tag.closets.all
-      @spring_all = closets.spring.publish
-      @summer_all = closets.summer.publish
-      @autumn_all = closets.autumn.publish
-      @winter_all = closets.winter.publish
-      @other_all = closets.other.publish
+      @spring_all = closets.spring
+      @summer_all = closets.summer
+      @autumn_all = closets.autumn
+      @winter_all = closets.winter
+      @other_all = closets.other
     end
   end
 

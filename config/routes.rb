@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    get '/about' => 'homes#about'
 
     get '/word_search' => 'searchs#word_search'
     get '/tag_name_search' => 'searchs#tag_name_search'
@@ -44,7 +43,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-    get '/about' => 'homes#about'
 
     get '/word_search' => 'searchs#word_search'
     get '/tag_name_search' => 'searchs#tag_name_search'

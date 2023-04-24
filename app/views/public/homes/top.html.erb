@@ -1,17 +1,42 @@
-<%= flash[:notice] %>
 <div class="container">
-  <div class="row my-5">
-    <div class="col-12 justify-content-center text-center">
-      <h1 class="mb-5"><strong>My Closetへようこそ！</strong></h1>
-      <div class="row">
-        <div class="bg-info col-lg-4 col-sm-5 py-5 border">
-          <h4>My Closetへ</h4>
+  <div class="row mt-5">
+    <div class="col-12 text-center">
+      <h1 class="mb-5"><strong>My Closetとは</strong></h1>
+    <!--<div class="row">-->
+      <h6><strong>My Closet</strong>は、購入した服を管理・投稿することができるアプリケーションです。</h6>
+    <!--</div>-->
+    <div class="row mt-5 justify-content-center">
+      <div class="example-1 p-2" style="position: relative; height:330px; width: 350px; background-color: #F8FFC4;">
+        <div style="position: absolute; bottom:10px;">
+          <%= image_tag 'example-1.png', size:"200x200", style:"opacity: 0.5;" %>
         </div>
-        <div class="offset-1 bg-success col-lg-4 col-sm-5 py-5">
-          <h4>他の人の</br >投稿を見る</h4>
+        <div class="text">
+          <h5 class="mb-4"><strong>どこでも確認！</strong></h5>
+          <p>新しい服を購入時、「似たような服が家にある気がする・・」と悩んでしまうことはありますか？
+            <strong>My Closet</strong>で管理しておけば、外出中でも写真付きで確認することが可能です。</p>
         </div>
+      </div>
+      <div class="example-2 p-2" style="position: relative; height:330px; width: 350px; background-color: #FFEAF4;">
+        <div style="position: absolute; bottom:10px;">
+          <%= image_tag 'example-2.png', size:"200x200", style:"opacity: 0.5;" %>
+        </div>
+        <div class="text">
+          <h5 class="mb-4"><strong>季節ごとに服を管理！</strong></h5>
+          <p>昨シーズンはどんな服を着ていたか忘れてしまうことがあると思います。
+            <strong>My Closet</strong>は季節ごとに管理できるので、すぐにご確認いただけます。</p>
+        </div>
+      </div>
+      <div class="example-3 p-2" style="position: relative; height:330px; width: 350px; background-color: #E5E5FF;">
+        <div style="position: absolute; bottom:10px;">
+          <%= image_tag 'example-3.png', size:"120x150", style:"opacity: 0.5;" %>
+        </div>
+        <div class="text">
+          <h5 class="mb-4"><strong>お気に入りの服を投稿しよう！</strong></h5>
+          <p><strong>My Closet</strong>では服の管理だけではなく、投稿することもできます。
+            また、他の会員の服を閲覧し、新たな好きを発見しましょう。</p>
+        </div>
+      </div>
       </div>
     </div>
   </div>
 </div>
-

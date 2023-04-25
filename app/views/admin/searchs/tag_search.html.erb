@@ -3,8 +3,8 @@
     <h1>「<%= @tag.tag_name %>」タグの検索</h1>
   </div>
   <div class="offset-1 mt-3 mb-5">
-    <%= form_with url:admin_tag_name_search_path(tag.id), method: :get do |f| %>
-      <%= f.text_field :content, placeholder: "タグ名で検索" %>
+    <%= form_with url:admin_tag_name_search_path, method: :get do |f| %>
+      <%= f.text_field :tag_word, placeholder: "タグ名で検索" %>
       <%= f.submit "検索" %>
     <% end %>
   </div>

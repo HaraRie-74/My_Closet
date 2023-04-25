@@ -94,6 +94,8 @@ class Public::UsersController < ApplicationController
     user.favorites.destroy_all
     user.active_relationships.destroy_all
     user.passive_relationships.destroy_all
+    # ログアウト
+    reset_session
     flash[:notice] = "退会処理が完了しました。ご利用ありがとうございました"
     redirect_to root_path
   end
@@ -102,7 +104,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image)
+    params.require(:user).permit(:email, :name, :introduction, :profile_image)
   end
 
   def is_matching_login_user

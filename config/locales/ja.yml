@@ -21,6 +21,7 @@ ja:
               too_long: "は２０文字までです"
             email:
               blank: "を入力してください"
+              taken: "が既に使用されています"
             password:
               blank: "を入力してください"
               too_short: "を入力してください（６文字以上）"

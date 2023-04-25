@@ -1,4 +1,8 @@
 <div class="container">
-  <h1><%= @user.name %>をフォローしている会員</h1>
-  <%= render 'user_index', users: @follows %>
+  <div class="row my-5">
+    <div class="col-12 text-center">
+      <h1 class="mb-5"><%= @user.name %>をフォローしている会員</h1>
+      <%= render 'user_index', users: @follows %>
+    </div>
+  </div>
 </div>

@@ -27,7 +27,7 @@
           </div>
           <div class="post-tag">
             <% spring.tags.each do |tag| %>
-              <%= link_to tag_search_path(tag.id) do %>
+              <%= link_to tag_search_path(tag_id: tag.id, user_num: user_number) do %>
                 <i class="fas fa-tag"></i><%= tag.tag_name %>
               <% end %>&ensp;
             <% end %>

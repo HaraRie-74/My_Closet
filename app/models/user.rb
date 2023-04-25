@@ -50,10 +50,14 @@ class User < ApplicationRecord
 
   # ゲストユーザー
   def self.guest
-    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+    guest = find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
     end
+    if guest.is_deleted?
+      guest.update(is_deleted: false)
+    end
+    guest
   end
 
 end

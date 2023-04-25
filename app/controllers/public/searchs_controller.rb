@@ -19,14 +19,44 @@ class Public::SearchsController < ApplicationController
     end
   end
 
+  # def tag_search
+  #   @tag = Tag.find(params[:tag_id])
+  #   @closets = @tag.closets.all
+  #   @spring_all = @closets.spring.publish
+  #   @summer_all = @closets.summer.publish
+  #   @autumn_all = @closets.autumn.publish
+  #   @winter_all = @closets.winter.publish
+  #   @other_all = @closets.other.publish
+  # end
+
   def tag_search
     @tag = Tag.find(params[:tag_id])
-    @closets = @tag.closets.all
-    @spring_all = @closets.spring.publish
-    @summer_all = @closets.summer.publish
-    @autumn_all = @closets.autumn.publish
-    @winter_all = @closets.winter.publish
-    @other_all = @closets.other.publish
+    @user_number = params[:user_num].to_i
+    # MyClosetだったら
+    if @user_number == current_user.id
+      @closets = @tag.closets.where(user_id: @user_number)
+      @spring_all = @closets.spring
+      @summer_all = @closets.summer
+      @autumn_all = @closets.autumn
+      @winter_all = @closets.winter
+      @other_all = @closets.other
+      # みんなの投稿だったら
+    elsif @user_number == 0
+      @closets = @tag.closets.all
+      @spring_all = @closets.spring.publish
+      @summer_all = @closets.summer.publish
+      @autumn_all = @closets.autumn.publish
+      @winter_all = @closets.winter.publish
+      @other_all = @closets.other.publish
+    else
+      # 他人のClosetだったら
+      @closets = @tag.closets.where(user_id: @user_number)
+      @spring_all = @closets.spring.publish
+      @summer_all = @closets.summer.publish
+      @autumn_all = @closets.autumn.publish
+      @winter_all = @closets.winter.publish
+      @other_all = @closets.other.publish
+    end
   end
 
   def tag_name_search

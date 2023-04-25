@@ -25,6 +25,8 @@ class Public::ClosetsController < ApplicationController
 
   # 他人のみ
   def index
+    # タグ検索機能で使用
+    @user_number = 0
     @spring_all = Closet.spring.publish
     @summer_all = Closet.summer.publish
     @autumn_all = Closet.autumn.publish

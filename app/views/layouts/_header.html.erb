@@ -23,7 +23,11 @@
             <%= link_to "会員一覧", users_path, class:"nav-link text-dark" %>
           </li>
           <li class="nav-item">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link text-dark" %>
+            <% if current_user.email == 'guest@example.com' %>
+              <%= link_to "ログアウト", quit_user_path(current_user.id), method: :patch, class:"nav-link text-dark" %>
+            <% else %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link text-dark" %>
+            <% end %>
           </li>
         <% elsif admin_signed_in? %>
           <li class="nav-item">

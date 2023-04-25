@@ -2,11 +2,11 @@ class Public::UsersController < ApplicationController
   # ログイン済みでないとアクセスできない(deviseのメソッド)
   before_action :authenticate_user!
   # 他ユーザーに対するアクセス制限
-  before_action :is_matching_login_user, only:[:edit, :update, :quit_check, :quit]
+  before_action :is_matching_login_user, only:[:edit, :update, :quit_check]
   # ゲストユーザーは会員編集させない
-  before_action :ensure_guest_user, only:[:edit, :update, :quit_check, :quit]
+  before_action :ensure_guest_user, only:[:edit, :update, :quit_check]
+  
   # 自分・他人
-
   def show
     @user = User.find(params[:id])
   end
@@ -20,6 +20,8 @@ class Public::UsersController < ApplicationController
   def closet_index
     @user = User.find(params[:id])
     if current_user == @user
+      # タグ検索機能で使用
+      @user_number = current_user.id
       @spring_all = current_user.closets.spring
       @summer_all = current_user.closets.summer
       @autumn_all = current_user.closets.autumn
@@ -27,6 +29,8 @@ class Public::UsersController < ApplicationController
       @other_all = current_user.closets.other
     else
       # 公開ステータスのみ表示
+      # タグ検索機能で使用
+      @user_number = @user.id
       @spring_all = @user.closets.spring.publish
       @summer_all = @user.closets.summer.publish
       @autumn_all = @user.closets.autumn.publish

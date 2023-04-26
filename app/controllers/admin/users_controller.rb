@@ -7,12 +7,6 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
-  # ここ削除
-  def destroy
-    user = User.find(params[:id])
-    user.destroy
-    redirect_to admin_users_path
-  end
 
   def closet_index
     @user = User.find(params[:id])

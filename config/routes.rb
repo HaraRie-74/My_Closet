@@ -46,7 +46,6 @@ Rails.application.routes.draw do
 
     get '/word_search' => 'searchs#word_search'
     get '/tag_name_search' => 'searchs#tag_name_search'
-
     resources :tags do
       get '/search' => 'searchs#tag_search'
 
@@ -56,7 +55,8 @@ Rails.application.routes.draw do
       resources :closet_comments, only:[:update]
     # patch 'closet_comments/:id' => 'closet_comments#update', as:'admin_comment'
     end
-    resources :users, only:[:index, :show] do
+    # ここ削除（destroy）
+    resources :users, only:[:index, :show, :destroy] do
       member do
         get :closet_index, :following, :follows, :favorite, :quit_check
         patch :quit

@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only:[:edit, :update, :quit_check]
   # ゲストユーザーは会員編集させない
   before_action :ensure_guest_user, only:[:edit, :update, :quit_check]
-  
+
   # 自分・他人
   def show
     @user = User.find(params[:id])
@@ -58,6 +58,7 @@ class Public::UsersController < ApplicationController
   def favorite
     @user = User.find(params[:id])
     closets = @user.favorited_closets
+    @user_number = @user.id
     @spring_all = closets.spring
     @summer_all = closets.summer
     @autumn_all = closets.autumn

@@ -1,5 +1,6 @@
 <%= form_with url:admin_word_search_path, method: :get do |f| %>
   <%= f.text_field :content, placeholder: "購入店舗で検索" %>
   <%= f.hidden_field :model, :value => 'closet' %>
+  <%= f.hidden_field :user_num, :value => 0 %>
   <%= f.submit "検索" %>
 <% end %>

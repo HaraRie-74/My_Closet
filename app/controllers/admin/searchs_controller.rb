@@ -10,6 +10,7 @@ class Admin::SearchsController < ApplicationController
     else
       @records = search_for(@model, @content)
       if @model == 'closet'
+        @user_number = params[:user_num]
         @spring_all = @records.spring
         @summer_all = @records.summer
         @autumn_all = @records.autumn

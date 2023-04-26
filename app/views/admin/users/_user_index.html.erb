@@ -27,6 +27,7 @@
               〇
             <% end %>
           </td>
+          <td><%= link_to "削除", admin_user_path(user.id), method: :delete %></td>
         </tr>
       </tbody>
     <% end %>

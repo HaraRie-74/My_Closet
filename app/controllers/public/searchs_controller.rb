@@ -10,6 +10,7 @@ class Public::SearchsController < ApplicationController
     else
       @records = search_for(@model, @content)
       if @model == 'closet'
+        @user_number = params[:user_num]
         @spring_all = @records.spring.publish
         @summer_all = @records.summer.publish
         @autumn_all = @records.autumn.publish

@@ -3,6 +3,7 @@
     <h1 class="offset-4"><%= @user.name %>のいいね一覧</h1>
   </div>
   <%= render 'admin/closets/closet_index',
+   user_number: @user_number,
    spring_all: @spring_all,
    summer_all: @summer_all,
    autumn_all: @autumn_all,

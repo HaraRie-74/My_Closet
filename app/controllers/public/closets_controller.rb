@@ -64,16 +64,13 @@ class Public::ClosetsController < ApplicationController
   end
 
   def destroy
-    closet = Closet.find(params[:id])
-    if closet.destroy
-      @spring_all = Closet.spring
-      @summer_all = Closet.summer
-      @autumn_all = Closet.autumn
-      @winter_all = Closet.winter
-      @other_all = Closet.other
+    @closet = Closet.find(params[:id])
+    if @closet.destroy
       flash[:notice]="投稿を削除しました"
       redirect_to closet_index_path(current_user.id)
     else
+      @closet_tags = @closet.tags
+      @comment = ClosetComment.new
       render 'show'
     end
   end

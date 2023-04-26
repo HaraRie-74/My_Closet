@@ -6,6 +6,13 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+  
+  # ここ削除
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to admin_users_path
+  end
 
   def closet_index
     @user = User.find(params[:id])
@@ -30,6 +37,7 @@ class Admin::UsersController < ApplicationController
   def favorite
     @user = User.find(params[:id])
     closets = @user.favorited_closets
+    @user_number = @user.id
     @spring_all = closets.spring
     @summer_all = closets.summer
     @autumn_all = closets.autumn

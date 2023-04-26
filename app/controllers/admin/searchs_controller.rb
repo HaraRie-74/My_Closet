@@ -44,7 +44,7 @@ class Admin::SearchsController < ApplicationController
     @tag_word = params[:tag_word]
     @tag = Tag.find_by(tag_name: @tag_word)
     @user_number = params[:user_num].to_i
-    if @tag_word.blank?
+    if @tag_word.blank? || @tag.blank?
       @closets = []
       # みんなの投稿だったら
     elsif @user_number == 0

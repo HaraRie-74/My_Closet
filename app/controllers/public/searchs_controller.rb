@@ -65,7 +65,7 @@ class Public::SearchsController < ApplicationController
     @tag_word = params[:tag_word]
     @tag = Tag.find_by(tag_name: @tag_word)
     @user_number = params[:user_num].to_i
-    if @tag_word.blank?
+    if @tag_word.blank? || @tag.blank?
       @closets = []
     # MyClosetだったら
     elsif @user_number == current_user.id
@@ -77,7 +77,7 @@ class Public::SearchsController < ApplicationController
       @other_all = @closets.other
       # みんなの投稿だったら
     elsif @user_number == 0
-      @closets = @tag.closets.all
+      @closets = @tag.closets
       @spring_all = @closets.spring.publish
       @summer_all = @closets.summer.publish
       @autumn_all = @closets.autumn.publish

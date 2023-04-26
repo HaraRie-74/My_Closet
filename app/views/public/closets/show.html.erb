@@ -40,7 +40,13 @@
           </tr>
           <tr>
             <td>値段</td>
-            <td><%= @closet.purchase_price.to_s(:delimited) %> 円</td>
+            <td>
+              <% if @closet.purchase_price.present? %>
+                <%= @closet.purchase_price.to_s(:delimited) %> 円
+              <% else %>
+                --- 円
+              <% end %>
+              </td>
           </tr>
           <tr>
             <td>季節</td>

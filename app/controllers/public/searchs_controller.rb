@@ -31,6 +31,7 @@ class Public::SearchsController < ApplicationController
 
   def tag_search
     @tag = Tag.find(params[:tag_id])
+    # リンクで受け取った値はstr型
     @user_number = params[:user_num].to_i
     # MyClosetだったら
     if @user_number == current_user.id
@@ -62,15 +63,34 @@ class Public::SearchsController < ApplicationController
   def tag_name_search
     @tag_word = params[:tag_word]
     @tag = Tag.find_by(tag_name: @tag_word)
+    @user_number = params[:user_num].to_i
     if @tag.blank?
       @records = []
+    end
+    # MyClosetだったら
+    if @user_number == current_user.id
+      @closets = @tag.closets.where(user_id: @user_number)
+      @spring_all = @closets.spring
+      @summer_all = @closets.summer
+      @autumn_all = @closets.autumn
+      @winter_all = @closets.winter
+      @other_all = @closets.other
+      # みんなの投稿だったら
+    elsif @user_number == 0
+      @closets = @tag.closets.all
+      @spring_all = @closets.spring.publish
+      @summer_all = @closets.summer.publish
+      @autumn_all = @closets.autumn.publish
+      @winter_all = @closets.winter.publish
+      @other_all = @closets.other.publish
     else
-      closets = @tag.closets.all
-      @spring_all = closets.spring.publish
-      @summer_all = closets.summer.publish
-      @autumn_all = closets.autumn.publish
-      @winter_all = closets.winter.publish
-      @other_all = closets.other.publish
+      # 他人のClosetだったら
+      @closets = @tag.closets.where(user_id: @user_number)
+      @spring_all = @closets.spring.publish
+      @summer_all = @closets.summer.publish
+      @autumn_all = @closets.autumn.publish
+      @winter_all = @closets.winter.publish
+      @other_all = @closets.other.publish
     end
   end
 

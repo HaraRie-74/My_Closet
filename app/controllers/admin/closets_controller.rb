@@ -4,6 +4,8 @@ class Admin::ClosetsController < ApplicationController
 
   # 管理者は非公開投稿を見ることができる
   def index
+    # タグ検索機能で使用
+    @user_number = 0
     @spring_all = Closet.spring
     @summer_all = Closet.summer
     @autumn_all = Closet.autumn

@@ -21,26 +21,46 @@ class Admin::SearchsController < ApplicationController
 
   def tag_search
     @tag = Tag.find(params[:tag_id])
-    @closets = @tag.closets.all
-    @spring_all = @closets.spring
-    @summer_all = @closets.summer
-    @autumn_all = @closets.autumn
-    @winter_all = @closets.winter
-    @other_all = @closets.other
+    @user_number = params[:user_num].to_i
+    if @user_number == 0
+      @closets = @tag.closets.all
+      @spring_all = @closets.spring
+      @summer_all = @closets.summer
+      @autumn_all = @closets.autumn
+      @winter_all = @closets.winter
+      @other_all = @closets.other
+    else
+      @closets = @tag.closets.where(user_id: @user_number)
+      @spring_all = @closets.spring
+      @summer_all = @closets.summer
+      @autumn_all = @closets.autumn
+      @winter_all = @closets.winter
+      @other_all = @closets.other
+    end
   end
 
   def tag_name_search
     @tag_word = params[:tag_word]
     @tag = Tag.find_by(tag_name: @tag_word)
-    if @tag.blank?
-      @records = []
+    @user_number = params[:user_num].to_i
+    if @tag_word.blank?
+      @closets = []
+      # みんなの投稿だったら
+    elsif @user_number == 0
+      @closets = @tag.closets.all
+      @spring_all = @closets.spring
+      @summer_all = @closets.summer
+      @autumn_all = @closets.autumn
+      @winter_all = @closets.winter
+      @other_all = @closets.other
     else
-      closets = @tag.closets.all
-      @spring_all = closets.spring
-      @summer_all = closets.summer
-      @autumn_all = closets.autumn
-      @winter_all = closets.winter
-      @other_all = closets.other
+      # 他人のClosetだったら
+      @closets = @tag.closets.where(user_id: @user_number)
+      @spring_all = @closets.spring
+      @summer_all = @closets.summer
+      @autumn_all = @closets.autumn
+      @winter_all = @closets.winter
+      @other_all = @closets.other
     end
   end
 

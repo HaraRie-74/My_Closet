@@ -9,6 +9,7 @@ class Admin::UsersController < ApplicationController
 
   def closet_index
     @user = User.find(params[:id])
+    @user_number = @user.id
     @spring_all = @user.closets.spring
     @summer_all = @user.closets.summer
     @autumn_all = @user.closets.autumn

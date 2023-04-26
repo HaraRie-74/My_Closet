@@ -9,7 +9,7 @@
       <%= f.submit "検索" %>
     <% end %>
   </div>
-  <% if @tag.present? %>
+  <% if @closets.present? %>
     <%= render 'public/users/closet_index',
       user_number: @user_number,
       spring_all: @spring_all,

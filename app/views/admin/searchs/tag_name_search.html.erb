@@ -5,11 +5,13 @@
   <div class="offset-1 mt-3 mb-5">
     <%= form_with url:admin_tag_name_search_path, method: :get do |f| %>
       <%= f.text_field :tag_word, placeholder: "タグ名で検索" %>
+      <%= f.hidden_field :user_num, :value => @user_number %>
       <%= f.submit "検索" %>
     <% end %>
   </div>
-  <% if @tag.present? %>
+  <% if @closets.present? %>
     <%= render 'admin/closets/closet_index',
+      user_number: @user_number,
       spring_all: @spring_all,
       summer_all: @summer_all,
       autumn_all: @autumn_all,

@@ -64,11 +64,10 @@ class Public::SearchsController < ApplicationController
     @tag_word = params[:tag_word]
     @tag = Tag.find_by(tag_name: @tag_word)
     @user_number = params[:user_num].to_i
-    if @tag.blank?
-      @records = []
-    end
+    if @tag_word.blank?
+      @closets = []
     # MyClosetだったら
-    if @user_number == current_user.id
+    elsif @user_number == current_user.id
       @closets = @tag.closets.where(user_id: @user_number)
       @spring_all = @closets.spring
       @summer_all = @closets.summer

@@ -46,8 +46,10 @@ Rails.application.routes.draw do
 
     get '/word_search' => 'searchs#word_search'
     get '/tag_name_search' => 'searchs#tag_name_search'
+
     resources :tags do
       get '/search' => 'searchs#tag_search'
+
     end
 
     resources :closets, only:[:index, :show] do

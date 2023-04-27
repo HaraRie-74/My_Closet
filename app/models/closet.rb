@@ -32,7 +32,7 @@ class Closet < ApplicationRecord
     # 古いタグを削除
     old_tags.each do |old|
       old_tag=self.tags.where(tag_name: old)
-      self.closet_tags.delete ClosetTag.find_by(tag_id: old_tag)
+      self.closet_tags.where(tag_id: old_tag).first.delete
     end
     # 新しいタグを保存。配列へ追加。
     new_tags.each do |new|

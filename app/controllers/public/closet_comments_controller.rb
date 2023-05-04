@@ -6,6 +6,7 @@ class Public::ClosetCommentsController < ApplicationController
     @closet = Closet.find(params[:closet_id])
     comment = current_user.closet_comments.new(closet_comment_params)
     comment.closet_id = @closet.id
+    comment.score = Language.get_data(closet_comment_params[:comment]) 
     if !comment.save
       @closet_tags = @closet.tags
       @comment = comment

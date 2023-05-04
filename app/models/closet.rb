@@ -14,6 +14,9 @@ class Closet < ApplicationRecord
 
   # いいねのリレーションシップ
   has_many :favorites, dependent: :destroy
+  
+  # 画像認識タグのリレーションシップ
+  has_many :vision_tags, dependent: :destroy
 
   enum season: { spring:0, summer:1, autumn:2, winter:3, other:4 }
 

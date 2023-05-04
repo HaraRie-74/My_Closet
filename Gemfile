@@ -60,6 +60,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'enum_help'
 
+# 環境変数を扱うためgem
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

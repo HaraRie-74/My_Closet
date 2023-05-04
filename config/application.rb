@@ -11,6 +11,9 @@ module MyCloset
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    # 画像認識vision.rbの読み込み
+    config.paths.add 'lib', eager_load: true
+
     config.i18n.default_locale = :ja
 
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }

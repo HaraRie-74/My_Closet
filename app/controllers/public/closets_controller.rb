@@ -16,6 +16,11 @@ class Public::ClosetsController < ApplicationController
     tag_list = params[:closet][:tag_name].split(',')
     if @closet.save
       @closet.save_tag(tag_list)
+      # 画像認識
+      tags = Vision.get_image_data(@closet.images[0])
+      tags.each do |tag|
+        @closet.vision_tags.create(vision_tag_name: tag)
+      end
       flash[:notice]="投稿に成功しました"
       redirect_to closet_path(@closet.id)
     else

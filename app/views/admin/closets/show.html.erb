@@ -15,7 +15,7 @@
         <div class="swiper-wrapper">
           <% @closet.images.each do |image| %>
             <div class="swiper-slide">
-              <%= image_tag image.variant(resize_to_limit: [350, 500]).processed %>
+              <%= image_tag image.variant(resize_to_limit: [350, 500]).processed, class: 'img-flu' %>
             </div>
           <% end %>
         </div>
